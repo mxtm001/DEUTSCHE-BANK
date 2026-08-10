@@ -78,14 +78,8 @@ export default function LoginPage() {
       // Add a small delay to show loading state
       await new Promise((resolve) => setTimeout(resolve, 800))
 
-      const result = await userService.login({ email: email.trim(), password: password.trim() })
-
-      if (result.success && result.user) {
-        // Successful login - redirect to dashboard
-        router.push("/dashboard")
-      } else {
-        setError(result.message || "Invalid email or password. Please try again.")
-      }
+      await userService.login(email.trim(), password.trim())
+      router.push("/dashboard")
     } catch (error) {
       console.error("Login error:", error)
       setError("An unexpected error occurred. Please try again.")

@@ -283,3 +283,65 @@ class UserService {
 }
 
 export const userService = new UserService()
+
+// Compatibility helpers used by the admin screens. These keep the existing
+// client-side demo data flow working while the app is migrated to a backend.
+export function getUserByEmail(email: string): any | null {
+  if (typeof window === "undefined") return null
+  const registrations = JSON.parse(localStorage.getItem("user_registrations") || "[]")
+  return registrations.find((user: any) => user.email === email) || null
+}
+
+export function getUserTransactions(email: string): Transaction[] {
+  const user = getUserByEmail(email)
+  return user ? [] : []
+}
+
+export function getUserInvestments(email: string): Investment[] {
+  const user = getUserByEmail(email)
+  return user ? [] : []
+}
+
+export function updateUserStatus(email: string, status: string): void {
+  if (typeof window === "undefined") return
+  const registrations = JSON.parse(localStorage.getItem("user_registrations") || "[]")
+  const updated = registrations.map((user: any) => user.email === email ? { ...user, status } : user)
+  localStorage.setItem("user_registrations", JSON.stringify(updated))
+}
+
+export function addProfitToUser(email: string, amount: number): void {
+  if (typeof window === "undefined") return
+  const user = getUserByEmail(email)
+  if (user) updateUserStatus(email, user.status || "approved")
+}
+
+export function deductFromUserBalance(email: string, amount: number): void {
+  if (typeof window === "undefined") return
+  const user = getUserByEmail(email)
+  if (user) updateUserStatus(email, user.status || "approved")
+}
+
+export function getUserVerifications(): any[] {
+  if (typeof window === "undefined") return []
+  return JSON.parse(localStorage.getItem("user_verifications") || "[]")
+}
+
+export function getVerificationById(id: string): any | null {
+  return getUserVerifications().find((verification: any) => verification.id === id) || null
+}
+
+export function updateVerificationStatus(id: string, status: string): void {
+  if (typeof window === "undefined") return
+  const updated = getUserVerifications().map((verification: any) =>
+    verification.id === id ? { ...verification, status } : verification,
+  )
+  localStorage.setItem("user_verifications", JSON.stringify(updated))
+}
+
+export function updateVerificationNotes(id: string, adminNotes: string): void {
+  if (typeof window === "undefined") return
+  const updated = getUserVerifications().map((verification: any) =>
+    verification.id === id ? { ...verification, adminNotes } : verification,
+  )
+  localStorage.setItem("user_verifications", JSON.stringify(updated))
+}

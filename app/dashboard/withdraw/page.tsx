@@ -237,7 +237,7 @@ export default function WithdrawPage() {
     loadUser()
   }, [router])
 
-  const balance = 150000000
+  const balance: number = 150000000
 
   const handleWithdraw = async (e: React.FormEvent) => {
     e.preventDefault()

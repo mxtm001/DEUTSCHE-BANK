@@ -25,7 +25,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     } else {
       // Auto-detect from browser language
       const browserLang = navigator.language.split("-")[0]
-      const detectedLang = ["en", "es", "fr", "de", "pt", "ar", "zh"].includes(browserLang) ? browserLang : "en"
+      const supportedLanguages: Language[] = ["en", "es", "fr", "de", "pt", "ar", "zh"]
+      const detectedLang: Language = supportedLanguages.includes(browserLang as Language)
+        ? (browserLang as Language)
+        : "en"
       setLanguage(detectedLang)
       setTranslations(getTranslations(detectedLang))
     }
@@ -38,7 +41,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }
 
   const handleSetCountry = (countryCode: string) => {
-    const detectedLang = getLanguageByCountry(countryCode)
+    const detectedLang = getLanguageByCountry(countryCode) as Language
     if (detectedLang !== language) {
       handleSetLanguage(detectedLang)
     }

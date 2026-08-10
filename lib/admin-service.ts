@@ -406,8 +406,8 @@ class AdminService {
   private getLoginActivitiesLocalStorage(limit: number): LoginActivity[] {
     try {
       const activities = JSON.parse(localStorage.getItem("login_activities") || "{}")
-      return Object.values(activities)
-        .sort((a: any, b: any) => new Date(b.loginTime).getTime() - new Date(a.loginTime).getTime())
+      return (Object.values(activities) as LoginActivity[])
+        .sort((a, b) => new Date(b.loginTime).getTime() - new Date(a.loginTime).getTime())
         .slice(0, limit)
     } catch (error) {
       console.error("Error getting login activities from localStorage:", error)
@@ -418,9 +418,9 @@ class AdminService {
   private getUserLoginHistoryLocalStorage(userId: string): LoginActivity[] {
     try {
       const activities = JSON.parse(localStorage.getItem("login_activities") || "{}")
-      return Object.values(activities)
-        .filter((activity: any) => activity.userId === userId)
-        .sort((a: any, b: any) => new Date(b.loginTime).getTime() - new Date(a.loginTime).getTime())
+      return (Object.values(activities) as LoginActivity[])
+        .filter((activity) => activity.userId === userId)
+        .sort((a, b) => new Date(b.loginTime).getTime() - new Date(a.loginTime).getTime())
     } catch (error) {
       console.error("Error getting user login history from localStorage:", error)
       return []
@@ -452,8 +452,8 @@ class AdminService {
   private getUserActivitiesLocalStorage(limit: number): UserActivity[] {
     try {
       const activities = JSON.parse(localStorage.getItem("user_activities") || "{}")
-      return Object.values(activities)
-        .sort((a: any, b: any) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+      return (Object.values(activities) as UserActivity[])
+        .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
         .slice(0, limit)
     } catch (error) {
       console.error("Error getting user activities from localStorage:", error)

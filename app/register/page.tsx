@@ -94,13 +94,13 @@ export default function RegisterPage() {
         country: country || "US", // Default to US if no country selected
       })
 
-      if (result.success) {
+      if (result) {
         setSuccess(true)
         setTimeout(() => {
           router.push("/dashboard")
         }, 2000)
       } else {
-        setError(result.message || "Registration failed")
+        setError("Registration failed")
       }
     } catch (error) {
       console.error("Registration error:", error)
