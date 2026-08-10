@@ -29,6 +29,7 @@ import {
   Printer,
 } from "lucide-react"
 import { userService } from "@/lib/user-service"
+import { CurrencySelector } from "@/components/currency-selector"
 
 interface CryptoCurrency {
   value: string
@@ -184,6 +185,7 @@ const germanBanks = [
   { value: "bunq", label: "Bunq" },
   { value: "n26", label: "N26" },
   { value: "raiffeisen-bank", label: "Raiffeisen Bank" },
+  { value: "postfinance", label: "PostFinance" },
 ]
 
 export default function WithdrawPage() {
@@ -191,6 +193,7 @@ export default function WithdrawPage() {
   const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [amount, setAmount] = useState("")
+  const [currency, setCurrency] = useState("EUR")
   const [processing, setProcessing] = useState(false)
   const [withdrawalMethod, setWithdrawalMethod] = useState("bank")
   const [bankDetails, setBankDetails] = useState<BankDetails>({
@@ -238,7 +241,7 @@ export default function WithdrawPage() {
 
   const handleWithdraw = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!amount) return
+    if (!amount || !currency) return
 
     const withdrawalAmount = parseFloat(amount)
     
@@ -261,6 +264,7 @@ export default function WithdrawPage() {
     
     const withdrawal = {
       amount: withdrawalAmount,
+      currency,
       method: withdrawalMethod,
       transferMethodLabel: transferMethodLabel,
       bankName: bankDetails.bankName || "Nicht angegeben",
@@ -288,10 +292,10 @@ export default function WithdrawPage() {
     setAmount("")
   }
 
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("de-DE", {
+  const formatCurrency = (value: number, currencyCode = currency) => {
+    return new Intl.NumberFormat(undefined, {
       style: "currency",
-      currency: "EUR",
+      currency: currencyCode,
     }).format(value)
   }
 
@@ -398,30 +402,44 @@ export default function WithdrawPage() {
           </CardHeader>
           <CardContent className="pt-6">
             <form onSubmit={handleWithdraw} className="space-y-6">
-              <div className="space-y-3">
-                <Label htmlFor="amount" className="text-white text-base font-semibold flex items-center">
-                  <DollarSign className="h-4 w-4 mr-2 text-[#f9a826]" />
-                  Abhebungsbetrag (EUR)
-                </Label>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">€</div>
-                  <Input
-                    id="amount"
-                    type="number"
-                    placeholder="Betrag eingeben"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    className="pl-8 h-14 bg-[#162040]/50 border-[#253256] text-white text-lg focus:border-[#f9a826] transition-colors"
-                    required
-                    min="100"
-                    max={balance}
-                  />
+              <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_220px]">
+                <div className="space-y-3">
+                  <Label htmlFor="amount" className="text-white text-base font-semibold flex items-center">
+                    <DollarSign className="h-4 w-4 mr-2 text-[#f9a826]" />
+                    Abhebungsbetrag ({currency})
+                  </Label>
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                      {new Intl.NumberFormat(undefined, { style: "currency", currency, currencyDisplay: "narrowSymbol" })
+                        .formatToParts(0)
+                        .find((part) => part.type === "currency")?.value || currency}
+                    </div>
+                    <Input
+                      id="amount"
+                      type="number"
+                      placeholder="Betrag eingeben"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                      className="pl-8 h-14 bg-[#162040]/50 border-[#253256] text-white text-lg focus:border-[#f9a826] transition-colors"
+                      required
+                      min="100"
+                      max={balance}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <p className="text-gray-400">Verfügbarer Saldo:</p>
+                    <p className="text-[#f9a826] font-semibold">{formatCurrency(balance)}</p>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between text-sm">
-                  <p className="text-gray-400">Verfügbarer Saldo:</p>
-                  <p className="text-[#f9a826] font-semibold">{formatCurrency(balance)}</p>
+                <div className="space-y-3">
+                  <Label htmlFor="withdrawal-currency" className="text-white text-base font-semibold">
+                    Auszahlungswährung
+                  </Label>
+                  <CurrencySelector value={currency} onChange={setCurrency} />
+                  <p className="text-xs text-gray-400">Wählen Sie eine unterstützte Währung für Ihr Zielland.</p>
                 </div>
               </div>
+
 
               <Tabs value={withdrawalMethod} onValueChange={setWithdrawalMethod} className="w-full">
                 <TabsList className="grid w-full grid-cols-4 bg-[#162040]/50 p-1 gap-1">
@@ -821,10 +839,15 @@ export default function WithdrawPage() {
                       <span className="text-gray-400 text-sm">Betrag:</span>
                       <span className="text-white font-semibold">{formatCurrency(pendingWithdrawal.amount)}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400 text-sm">Methode:</span>
-                      <span className="text-white font-semibold">{pendingWithdrawal.transferMethodLabel}</span>
-                    </div>
+  <div className="flex justify-between">
+  <span className="text-gray-400 text-sm">Methode:</span>
+  <span className="text-white font-semibold">{pendingWithdrawal.transferMethodLabel}</span>
+  </div>
+  <div className="flex justify-between">
+  <span className="text-gray-400 text-sm">Währung:</span>
+  <span className="text-white font-semibold">{pendingWithdrawal.currency}</span>
+  </div>
+
                     <div className="flex justify-between">
                       <span className="text-gray-400 text-sm">Ziel:</span>
                       <span className="text-white font-semibold text-sm">
@@ -943,10 +966,15 @@ export default function WithdrawPage() {
                       <span className="text-gray-400 text-xs">Betrag:</span>
                       <span className="text-white font-semibold text-sm">{formatCurrency(pendingWithdrawal.amount)}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400 text-xs">Methode:</span>
-                      <span className="text-white font-semibold text-sm">{pendingWithdrawal.transferMethodLabel}</span>
-                    </div>
+  <div className="flex justify-between">
+  <span className="text-gray-400 text-xs">Methode:</span>
+  <span className="text-white font-semibold text-sm">{pendingWithdrawal.transferMethodLabel}</span>
+  </div>
+  <div className="flex justify-between">
+  <span className="text-gray-400 text-xs">Währung:</span>
+  <span className="text-white font-semibold text-sm">{pendingWithdrawal.currency}</span>
+  </div>
+
                     <div className="border-t border-slate-600 pt-2 mt-2">
                       <p className="text-yellow-300 text-xs">
                         <strong>Hinweis:</strong> Diese Transaktion wurde nicht verarbeitet.
