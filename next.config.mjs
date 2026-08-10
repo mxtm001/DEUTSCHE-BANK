@@ -9,7 +9,6 @@ const nextConfig = {
     ],
   },
   poweredByHeader: false,
-  experimental: {},
   async headers() {
     return [
       {
