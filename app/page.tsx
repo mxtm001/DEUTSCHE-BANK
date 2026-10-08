@@ -39,8 +39,15 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="container mx-auto py-20 px-4 text-center relative">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+      <section className="container mx-auto overflow-hidden py-20 px-4 text-center relative">
+        <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#f9a826]/10 blur-3xl animate-float-slow" />
+        <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl animate-float-reverse" />
+        <div className="relative">
+        <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-[#f9a826]/30 bg-[#162040]/70 px-4 py-2 text-sm text-[#f4c15d] animate-fade-in">
+          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          Markets are live and monitored 24/7
+        </div>
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white animate-fade-in">
           Professional Investment Platform
         </h1>
         <p
@@ -69,6 +76,7 @@ export default function HomePage() {
             </Button>
           </Link>
         </div>
+        </div>
       </section>
 
       <section id="plans" className="container mx-auto py-16 px-4">
@@ -76,7 +84,7 @@ export default function HomePage() {
           Investment Plans
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256] hover:border-[#f9a826] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#f9a826]/30">
+          <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256] hover:border-[#f9a826] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#f9a826]/30">
             <CardHeader>
               <CardTitle className="text-white">Starter Plan</CardTitle>
               <CardDescription className="text-gray-300">Perfect for beginners</CardDescription>
@@ -135,7 +143,7 @@ export default function HomePage() {
           </Card>
 
           <Card
-            className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256] hover:border-[#f9a826] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#f9a826]/30"
+            className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256] hover:border-[#f9a826] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#f9a826]/30"
             style={{ animationDelay: "2s" }}
           >
             <CardHeader>
