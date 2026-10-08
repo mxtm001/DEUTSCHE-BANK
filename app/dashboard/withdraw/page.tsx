@@ -248,7 +248,7 @@ export default function WithdrawPage() {
     } else if (withdrawalMethod === "pix") {
       transferMethodLabel = "PIX"
     } else if (withdrawalMethod === "crypto") {
-      transferMethodLabel = "Cryptowährung"
+      transferMethodLabel = "Cryptocurrency"
     } else if (withdrawalMethod === "paypal") {
       transferMethodLabel = "PayPal"
     }
@@ -257,13 +257,13 @@ export default function WithdrawPage() {
       amount: withdrawalAmount,
       method: withdrawalMethod,
       transferMethodLabel: transferMethodLabel,
-      bankName: bankDetails.bankName || "Nicht angegeben",
-      accountName: bankDetails.accountName || "Nicht angegeben",
+      bankName: bankDetails.bankName || "Not provided",
+      accountName: bankDetails.accountName || "Not provided",
       transferMethod: bankDetails.transferMethod,
-      pixKey: pixDetails.pixKey || "Nicht angegeben",
-      cryptocurrency: cryptoDetails.cryptocurrency || "Nicht angegeben",
-      walletAddress: cryptoDetails.walletAddress || "Nicht angegeben",
-      paypalEmail: paypalDetails.email || "Nicht angegeben",
+      pixKey: pixDetails.pixKey || "Not provided",
+      cryptocurrency: cryptoDetails.cryptocurrency || "Not provided",
+      walletAddress: cryptoDetails.walletAddress || "Not provided",
+      paypalEmail: paypalDetails.email || "Not provided",
     }
     setPendingWithdrawal(withdrawal)
     setShowConfirmation(true)
@@ -485,7 +485,7 @@ export default function WithdrawPage() {
                         id="transferMethod"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Wählen Sie die Transfer method" />
+                        <SelectValue placeholder="Select a transfer method" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white">
                         <SelectItem
@@ -504,7 +504,7 @@ export default function WithdrawPage() {
                           value="instant-sepa"
                           className="focus:bg-[#253256] focus:text-white"
                         >
-                          Instant SEPA (Sofortüberweisung)
+                          Instant SEPA (instant transfer)
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -593,7 +593,7 @@ export default function WithdrawPage() {
                     </Label>
                     <Input
                       id="swiftCode"
-                      placeholder="SWIFT oder BIC Code (z.B. DEUTDEDE)"
+                      placeholder="SWIFT or BIC code (e.g. DEUTDEDE)"
                       value={bankDetails.swiftCode}
                       onChange={(e) => setBankDetails({ ...bankDetails, swiftCode: e.target.value })}
                       className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
@@ -638,11 +638,11 @@ export default function WithdrawPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="pixKey" className="text-white">
-                      PIX-Schlüssel
+PIX key
                     </Label>
                     <Input
                       id="pixKey"
-                      placeholder="Geben Sie Ihren PIX-Schlüssel ein"
+                      placeholder="Enter your PIX key"
                       value={pixDetails.pixKey}
                       onChange={(e) => setPixDetails({ ...pixDetails, pixKey: e.target.value })}
                       className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
@@ -655,7 +655,7 @@ export default function WithdrawPage() {
                     </Label>
                     <Input
                       id="pixHolder"
-                      placeholder="Vollständiger Name"
+                      placeholder="Full name"
                       value={pixDetails.accountHolder}
                       onChange={(e) => setPixDetails({ ...pixDetails, accountHolder: e.target.value })}
                       className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
@@ -668,21 +668,20 @@ export default function WithdrawPage() {
                   <Alert className="bg-blue-500/10 border-blue-500/30 text-blue-300">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>
-                      Cryptoabhebungen werden in 1-2 Stunden verarbeitet. Überprüfen Sie die Wallet-Adresse und das
-                      Netzwerk.
+Crypto withdrawals are processed within 1–2 hours. Check your wallet address and network carefully.
                     </AlertDescription>
                   </Alert>
 
                   <div className="space-y-2">
                     <Label htmlFor="cryptocurrency" className="text-white">
-                      Wählen Sie die Cryptowährung
+                      Select a cryptocurrency
                     </Label>
                     <Select value={cryptoDetails.cryptocurrency} onValueChange={handleCryptoChange}>
                       <SelectTrigger
                         id="cryptocurrency"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Wählen Sie Cryptowährung" />
+                        <SelectValue placeholder="Select a cryptocurrency" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white">
                         {cryptocurrencies.map((crypto) => (
@@ -704,17 +703,17 @@ export default function WithdrawPage() {
                     </Select>
                     <p className="text-xs text-gray-400 flex items-center gap-1">
                       <Globe className="h-3 w-3" />
-                      Netzwerk: {cryptoDetails.network || "Wählen Sie eine Cryptowährung"}
+                      Network: {cryptoDetails.network || "Select a cryptocurrency"}
                     </p>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="walletAddress" className="text-white">
-                      Wallet-Adresse
+Wallet address
                     </Label>
                     <Input
                       id="walletAddress"
-                      placeholder={`Geben Sie Ihre ${cryptoDetails.cryptocurrency} Wallet-Adresse ein`}
+                      placeholder={`Enter your ${cryptoDetails.cryptocurrency} wallet address`}
                       value={cryptoDetails.walletAddress}
                       onChange={(e) => setCryptoDetails({ ...cryptoDetails, walletAddress: e.target.value })}
                       className="bg-[#162040]/50 border-[#253256] text-white h-12 font-mono text-sm focus:border-[#f9a826]"
@@ -722,35 +721,34 @@ export default function WithdrawPage() {
                     />
                     <p className="text-xs text-yellow-400 flex items-center gap-1">
                       <AlertCircle className="h-3 w-3" />
-                      Stellen Sie sicher, dass Sie das korrekte Netzwerk verwenden: {cryptoDetails.network}
+                      Make sure you use the correct network: {cryptoDetails.network}
                     </p>
                   </div>
 
                   <Alert className="border-yellow-500/30 bg-yellow-500/10">
                     <AlertCircle className="h-4 w-4 text-yellow-400" />
                     <AlertDescription className="text-yellow-300 text-sm">
-                      <strong>Wichtig:</strong> Das Senden von Mitteln an das falsche Netzwerk kann zum Verlust führen.
-                      Überprüfen Sie immer, ob das Netzwerk Ihrer Wallet entspricht.
+<strong>Important:</strong> Sending funds to the wrong network may result in permanent loss. Always confirm that the network matches your wallet.
                     </AlertDescription>
                   </Alert>
 
                   <div className="p-4 bg-[#162040]/50 rounded-lg border border-[#253256] space-y-3">
                     <h4 className="font-semibold text-white flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#f9a826]" />
-                      Details der ausgewählten Cryptowährung
+                      Selected cryptocurrency details
                     </h4>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <span className="text-xs text-gray-400">Münze</span>
+                        <span className="text-xs text-gray-400">Coin</span>
                         <div className="font-semibold text-white mt-1">
                           {cryptocurrencies.find((c) => c.value === cryptoDetails.cryptocurrency)?.label ||
-                            "Nicht ausgewählt"}
+                            "Not selected"}
                         </div>
                       </div>
                       <div>
-                        <span className="text-xs text-gray-400">Netzwerk</span>
+                        <span className="text-xs text-gray-400">Network</span>
                         <div className="font-semibold text-white mt-1">
-                          {cryptoDetails.network || "Nicht ausgewählt"}
+                          {cryptoDetails.network || "Not selected"}
                         </div>
                       </div>
                     </div>
@@ -764,12 +762,12 @@ export default function WithdrawPage() {
                   </Alert>
                   <div className="space-y-2">
                     <Label htmlFor="paypalEmail" className="text-white">
-                      PayPal-E-Mail
+PayPal email
                     </Label>
                     <Input
                       id="paypalEmail"
                       type="email"
-                      placeholder="Ihre PayPal-E-Mail"
+                      placeholder="Your PayPal email"
                       value={paypalDetails.email}
                       onChange={(e) => setPaypalDetails({ ...paypalDetails, email: e.target.value })}
                       className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
@@ -784,9 +782,9 @@ export default function WithdrawPage() {
                   <Shield className="h-5 w-5 text-green-400" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-white mb-1">Sichere Transaktion</p>
+                  <p className="text-sm font-semibold text-white mb-1">Secure transaction</p>
                   <p className="text-xs text-gray-300">
-                    Alle Transaktionen sind verschlüsselt und geschützt. Ihre Informationen sind bei uns sicher.
+                    All transactions are encrypted and protected. Your information is secure with us.
                   </p>
                 </div>
               </div>
@@ -803,7 +801,7 @@ export default function WithdrawPage() {
                     Verarbeitung...
                   </>
                 ) : balance === 0 ? (
-                  <>Kein Saldo verfügbar</>
+                  <>No balance available</>
                 ) : (
                   <>
                     Request withdrawal
@@ -856,7 +854,7 @@ export default function WithdrawPage() {
 
                   <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3">
                     <p className="text-yellow-300 text-sm">
-                      <strong>Wichtig:</strong> Bitte überprüfen Sie alle Angaben sorgfältig, bevor Sie fortfahren. Diese Aktion kann nicht rückgängig gemacht werden.
+                      <strong>Important:</strong> Please review all details carefully before continuing. This action cannot be undone.
                     </p>
                   </div>
                 </div>
@@ -925,7 +923,7 @@ export default function WithdrawPage() {
                 onClick={() => setShowModal(false)}
                 className="w-full h-12 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold shadow-lg"
               >
-                Schließen
+                Close
               </Button>
             </div>
           </DialogContent>
@@ -1166,7 +1164,7 @@ export default function WithdrawPage() {
                                 withdrawalReceipt?.method === "pix"
                                   ? `
                                 <div class="detail-row">
-                                  <div class="label">PIX-Schlüssel:</div>
+                                  <div class="label">PIX key:</div>
                                   <div class="value">${withdrawalReceipt?.pixKey}</div>
                                 </div>
                               `
@@ -1176,7 +1174,7 @@ export default function WithdrawPage() {
                                 withdrawalReceipt?.method === "crypto"
                                   ? `
                                 <div class="detail-row">
-                                  <div class="label">Cryptowährung:</div>
+                                  <div class="label">Cryptocurrency:</div>
                                   <div class="value">${withdrawalReceipt?.cryptocurrency}</div>
                                 </div>
                                 <div class="detail-row">
@@ -1190,7 +1188,7 @@ export default function WithdrawPage() {
                                 withdrawalReceipt?.method === "paypal"
                                   ? `
                                 <div class="detail-row">
-                                  <div class="label">PayPal-E-Mail:</div>
+                                  <div class="label">PayPal email:</div>
                                   <div class="value">${withdrawalReceipt?.paypalEmail}</div>
                                 </div>
                               `
@@ -1199,7 +1197,7 @@ export default function WithdrawPage() {
                             </div>
                             <div class="footer">
                               <p>Your withdrawal will arrive in 1–3 business days.</p>
-                              <p>Vielen Dank für Ihr Vertrauen in unsere Plattform.</p>
+                              <p>Thank you for trusting our platform.</p>
                             </div>
                           </body>
                         </html>
@@ -1220,7 +1218,7 @@ export default function WithdrawPage() {
                   }}
                   className="flex-1 h-9 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold text-sm"
                 >
-                  Schließen
+                  Close
                 </Button>
               </div>
             </div>
