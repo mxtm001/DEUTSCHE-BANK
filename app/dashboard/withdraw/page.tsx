@@ -1112,11 +1112,11 @@ PayPal email
                   <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-3 border border-slate-600">
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <p className="text-gray-400 text-xs mb-0.5">Transaktions-ID</p>
+                        <p className="text-gray-400 text-xs mb-0.5">Transaction ID</p>
                         <p className="text-white font-mono font-semibold break-all text-xs">{withdrawalReceipt.transactionId}</p>
                       </div>
                       <div>
-                        <p className="text-gray-400 text-xs mb-0.5">Datum & Uhrzeit</p>
+                        <p className="text-gray-400 text-xs mb-0.5">Date & time</p>
                         <p className="text-white font-semibold text-xs">{withdrawalReceipt.date}</p>
                       </div>
                       <div>
@@ -1137,7 +1137,7 @@ PayPal email
                     <h3 className="text-white font-semibold mb-2 text-sm">Details</h3>
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Methode:</span>
+                        <span className="text-gray-400">Method:</span>
                         <span className="text-white font-semibold capitalize">{withdrawalReceipt.transferMethodLabel}</span>
                       </div>
                       {withdrawalReceipt.method === "bank" && (
@@ -1165,7 +1165,7 @@ PayPal email
                             <span className="text-white text-xs">{withdrawalReceipt.cryptocurrency}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-400">Adresse:</span>
+                            <span className="text-gray-400">Address:</span>
                             <span className="text-white font-mono text-xs break-all">{withdrawalReceipt.walletAddress}</span>
                           </div>
                         </>
@@ -1181,11 +1181,11 @@ PayPal email
 
                   <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-2">
                     <p className="text-blue-300 text-xs">
-                      <strong>Hinweis:</strong> {withdrawalReceipt.transferMethodLabel === "Instant SEPA" 
+                      <strong>Note:</strong> {withdrawalReceipt.transferMethodLabel === "Instant SEPA" 
                         ? "Your instant transfer will be processed within 10 seconds."
                         : withdrawalReceipt.transferMethodLabel === "SEPA"
                         ? "Your transfer will be processed within 1 business day."
-                        : "Your withdrawal will arrive in 1–3 business days."} Sie erhalten eine Benachrichtigung, wenn abgeschlossen.
+                        : "Your withdrawal will arrive in 1–3 business days."} You will receive a notification when it is complete.
                     </p>
                   </div>
                 </div>
@@ -1217,24 +1217,21 @@ PayPal email
                           <body>
                             <div class="header">
                               <div class="title">Withdrawal receipt</div>
-                              <div>Transaktion erfolgreich verarbeitet</div>
+                              <div>Processed successfully</div>
                             </div>
                             <div class="section">
-                              <div class="section-title">Transaktionsinformationen</div>
+                              <div class="section-title">Transaction information</div>
                               <div class="detail-row">
-                                <div class="label">Transaktions-ID:</div>
+                                <div class="label">Transaction ID:</div>
                                 <div class="value">${withdrawalReceipt?.transactionId}</div>
                               </div>
                               <div class="detail-row">
-                                <div class="label">Datum & Uhrzeit:</div>
+                                <div class="label">Date & time:</div>
                                 <div class="value">${withdrawalReceipt?.date}</div>
                               </div>
                               <div class="detail-row">
                                 <div class="label">Withdrawal amount:</div>
-                                <div class="value amount">€${withdrawalReceipt?.amount.toLocaleString("en-US", {
-                                  minimumFractionDigits: 2,
-                                  maximumFractionDigits: 2,
-                                })}</div>
+                                <div class="value amount">${new Intl.NumberFormat("en-US", { style: "currency", currency: fiatCurrency }).format(withdrawalReceipt?.amount ?? 0)}</div>
                               </div>
                               <div class="detail-row">
                                 <div class="label">Status:</div>
@@ -1244,7 +1241,7 @@ PayPal email
                             <div class="section">
                               <div class="section-title">Withdrawal method details</div>
                               <div class="detail-row">
-                                <div class="label">Methode:</div>
+                                <div class="label">Method:</div>
                                 <div class="value">${withdrawalReceipt?.method.toUpperCase()}</div>
                               </div>
                               ${
@@ -1279,7 +1276,7 @@ PayPal email
                                   <div class="value">${withdrawalReceipt?.cryptocurrency}</div>
                                 </div>
                                 <div class="detail-row">
-                                  <div class="label">Wallet-Adresse:</div>
+                                  <div class="label">Wallet address:</div>
                                   <div class="value">${withdrawalReceipt?.walletAddress}</div>
                                 </div>
                               `
@@ -1310,7 +1307,7 @@ PayPal email
                   className="flex-1 h-9 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold flex items-center justify-center gap-1 text-sm"
                 >
                   <Printer className="h-4 w-4" />
-                  Drucken
+                  Print receipt
                 </Button>
                 <Button
                   onClick={() => {
