@@ -151,7 +151,7 @@ export default function RegisterPage() {
               <CheckCircle className="h-20 w-20 text-green-500 relative z-10" />
             </div>
             <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
-              Welcome to DEUTCH BANK!
+              Welcome to MXTM CRYPTO PLATFORM!
             </h2>
             <p className="text-gray-300 text-center mb-6 leading-relaxed">
               Your account has been created successfully. You're now part of our exclusive investment community.
@@ -182,10 +182,10 @@ export default function RegisterPage() {
             <div className="space-y-4">
               <Link href="/" className="flex items-center space-x-3 mb-8">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-[#f9a826]/50">
-                  <Image src="/logo.png" alt="DEUTCH BANK" fill className="object-cover" />
+                  <Image src="/mxtm-logo.png" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
                 </div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  DEUTCH BANK
+                  MXTM CRYPTO PLATFORM
                 </span>
               </Link>
 
@@ -197,7 +197,7 @@ export default function RegisterPage() {
               </h1>
 
               <p className="text-xl text-gray-300 leading-relaxed">
-                Join over 50,000+ investors who trust DEUTCH BANK for secure, profitable cryptocurrency and forex trading.
+                Join over 50,000+ investors who trust MXTM CRYPTO PLATFORM for secure, profitable cryptocurrency and forex trading.
               </p>
             </div>
 
@@ -239,9 +239,9 @@ export default function RegisterPage() {
             <div className="lg:hidden flex items-center justify-center mb-8">
               <Link href="/" className="flex items-center space-x-3">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                  <Image src="/logo.png" alt="DEUTCH BANK" fill className="object-cover" />
+                  <Image src="/mxtm-logo.png" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
                 </div>
-                <span className="text-xl font-bold text-white">DEUTCH BANK</span>
+                <span className="text-xl font-bold text-white">MXTM CRYPTO PLATFORM</span>
               </Link>
             </div>
 

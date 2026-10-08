@@ -119,9 +119,9 @@ export default function LoginPage() {
             </Link>
             <Link href="/" className="flex items-center">
               <div className="relative w-8 h-8 rounded-full overflow-hidden">
-                <Image src="/logo.png" alt="Deutsche Bank" fill className="object-cover" />
+                <Image src="/mxtm-logo.png" alt="MXTM Crypto Platform" fill className="object-cover" />
               </div>
-              <span className="ml-2 font-medium text-white">Deutsche Bank</span>
+              <span className="ml-2 font-medium text-white">MXTM CRYPTO PLATFORM</span>
             </Link>
           </div>
 

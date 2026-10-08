@@ -8,7 +8,7 @@ export default function TermsPage() {
       <header className="container mx-auto py-4 px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <div className="relative w-12 h-12">
-            <Image src="/logo.png" alt="MXTM Investment" fill className="object-contain" />
+            <Image src="/mxtm-logo.png" alt="MXTM Investment" fill className="object-contain" />
           </div>
           <span className="ml-2 text-white font-medium">MXTM INVESTMENT PLATFORM</span>
         </Link>

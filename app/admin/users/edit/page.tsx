@@ -196,7 +196,7 @@ export default function EditUser() {
         <div className="p-4 border-b border-[#253256]">
           <Link href="/" className="flex items-center">
             <div className="relative w-10 h-10 rounded-full overflow-hidden">
-              <Image src="/logo.png" alt="MXTM Investment" fill className="object-cover" />
+              <Image src="/mxtm-logo.png" alt="MXTM Investment" fill className="object-cover" />
             </div>
             <span className="ml-2 font-medium text-sm">ADMIN PANEL</span>
           </Link>
@@ -298,7 +298,7 @@ export default function EditUser() {
           </button>
           <Link href="/" className="flex items-center">
             <div className="relative w-10 h-10 rounded-full overflow-hidden">
-              <Image src="/logo.png" alt="MXTM Investment" fill className="object-cover" />
+              <Image src="/mxtm-logo.png" alt="MXTM Investment" fill className="object-cover" />
             </div>
           </Link>
           <div className="flex items-center">

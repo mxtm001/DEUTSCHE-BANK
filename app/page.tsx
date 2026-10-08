@@ -34,9 +34,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#070e27] text-white">
       <header className="container mx-auto py-4 px-4 flex justify-between items-center sticky top-0 bg-gradient-to-r from-[#050505]/95 to-[#0a1430]/95 backdrop-blur-lg z-50 border-b border-[#f5a623]/20 transition-all duration-300">
         <Link href="/" className="flex items-center hover:scale-110 transition-transform duration-300">
-          <img src="/placeholder.svg?height=48&width=48" alt="MXTM Investment" className="h-12 w-12 object-cover" />
+          <img src="/mxtm-logo.png" alt="MXTM Crypto Platform" className="h-12 w-12 rounded-xl object-cover" />
           <span className="ml-2 text-white font-medium">
-            MXTM INVESTMENT PLATFORM
+            MXTM CRYPTO PLATFORM
           </span>
         </Link>
         <div className="flex gap-4">
@@ -232,7 +232,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-gray-400">© 2024 MXTM INVESTMENT PLATFORM. All rights reserved.</p>
+              <p className="text-gray-400">© 2024 MXTM CRYPTO PLATFORM. All rights reserved.</p>
             </div>
             <div className="flex gap-4 flex-wrap">
               <Link href="/terms" className="text-gray-400 hover:text-[#f5a623] transition-colors duration-300">

@@ -181,7 +181,7 @@ export default function VerificationPage() {
         <div className="p-4 border-b border-[#253256]">
           <Link href="/" className="flex items-center">
             <div className="relative w-10 h-10 rounded-full overflow-hidden">
-              <Image src="/logo.png" alt="MXTM Investment" fill className="object-cover" />
+              <Image src="/mxtm-logo.png" alt="MXTM Investment" fill className="object-cover" />
             </div>
             <span className="ml-2 font-medium">MXTM INVESTMENT</span>
           </Link>
@@ -282,7 +282,7 @@ export default function VerificationPage() {
         <div className="flex items-center justify-between p-4">
           <Link href="/" className="flex items-center">
             <div className="relative w-8 h-8 rounded-full overflow-hidden">
-              <Image src="/logo.png" alt="MXTM Investment" fill className="object-cover" />
+              <Image src="/mxtm-logo.png" alt="MXTM Investment" fill className="object-cover" />
             </div>
             <span className="ml-2 font-medium text-white text-sm">MXTM</span>
           </Link>
