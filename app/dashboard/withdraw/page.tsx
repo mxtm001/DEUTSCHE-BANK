@@ -325,7 +325,7 @@ export default function WithdrawPage() {
               <Wallet className="h-6 w-6 text-black" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Mittel abheben
+              Withdraw funds
             </h1>
           </div>
           <p className="text-muted-foreground text-lg">Withdraw your funds securely to your preferred account</p>
@@ -354,7 +354,7 @@ export default function WithdrawPage() {
           <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256]/50 overflow-hidden relative group hover:border-blue-400/50 transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Verarbeitungszeit</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">Processing time</CardTitle>
               <div className="p-2 bg-blue-500/10 rounded-lg">
                 <Clock className="h-4 w-4 text-blue-400" />
               </div>
@@ -363,7 +363,7 @@ export default function WithdrawPage() {
               <div className="text-xl font-bold text-white">1-3 Tage</div>
               <p className="text-xs text-gray-400 mt-2 flex items-center">
                 <Zap className="h-3 w-3 mr-1 text-blue-400" />
-                Schnelle Verarbeitung
+                Fast processing
               </p>
             </CardContent>
           </Card>
@@ -377,7 +377,7 @@ export default function WithdrawPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-xl font-bold text-white">Unbegrenzt</div>
+              <div className="text-xl font-bold text-white">Unlimited</div>
               <p className="text-xs text-gray-400 mt-2 flex items-center">
                 <Globe className="h-3 w-3 mr-1 text-green-400" />
                 No restrictions
@@ -408,11 +408,11 @@ export default function WithdrawPage() {
                   Withdrawal amount (USD)
                 </Label>
                 <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">€</div>
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">$</div>
                   <Input
                     id="amount"
                     type="number"
-                    placeholder="Amount eingeben"
+                    placeholder="Enter amount"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     className="pl-8 h-14 bg-[#162040]/50 border-[#253256] text-white text-lg focus:border-[#f9a826] transition-colors"
@@ -539,7 +539,7 @@ export default function WithdrawPage() {
                   )}
 
                   <div className="space-y-2">
-                    <Label htmlFor="germanBank" className="text-white">
+                    <Label htmlFor="bank" className="text-white">
                       Select your bank
                     </Label>
                     <Select
@@ -550,7 +550,7 @@ export default function WithdrawPage() {
                       }}
                     >
                       <SelectTrigger
-                        id="germanBank"
+                        id="bank"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
                         <SelectValue placeholder="Select your bank" />
@@ -599,7 +599,7 @@ export default function WithdrawPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="swiftCode" className="text-white">
-                      SWIFT/BIC-Code
+                      SWIFT/BIC code
                     </Label>
                     <Input
                       id="swiftCode"
@@ -617,6 +617,27 @@ export default function WithdrawPage() {
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>PIX withdrawals are processed instantly to your account</AlertDescription>
                   </Alert>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="pixCurrency" className="text-white">
+                      Withdrawal currency
+                    </Label>
+                    <Select value={fiatCurrency} onValueChange={setFiatCurrency}>
+                      <SelectTrigger
+                        id="pixCurrency"
+                        className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
+                      >
+                        <SelectValue placeholder="Select a currency" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#162040] border-[#253256] text-white">
+                        {fiatCurrencies.map((currency) => (
+                          <SelectItem key={currency.value} value={currency.value}>
+                            {currency.symbol} {currency.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="pixBank" className="text-white">
@@ -820,7 +841,7 @@ PayPal email
                 {processing ? (
                   <>
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-black mr-2"></div>
-                    Verarbeitung...
+                    Processing...
                   </>
                 ) : balance === 0 ? (
                   <>No balance available</>
