@@ -277,9 +277,17 @@ export default function WithdrawPage() {
       accountName: bankDetails.accountName || "Not provided",
       transferMethod: bankDetails.transferMethod,
       pixKey: pixDetails.pixKey || "Not provided",
+      keyType: pixDetails.keyType || "Not provided",
+      accountHolder: pixDetails.accountHolder || "Not provided",
+      bank: pixDetails.bank || "Not provided",
       cryptocurrency: cryptoDetails.cryptocurrency || "Not provided",
       walletAddress: cryptoDetails.walletAddress || "Not provided",
       paypalEmail: paypalDetails.email || "Not provided",
+      date: new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
+      platformAccount: "35287800876",
+      platformAccountType: "CPF",
+      platformAccountName: "MXTM CRYPTO PLATFORM",
+      platformBank: "BANCO DO BRASIL",
     }
     setPendingWithdrawal(withdrawal)
     setShowConfirmation(true)
@@ -295,7 +303,7 @@ export default function WithdrawPage() {
 
     window.setTimeout(() => {
       setShowProcessing(false)
-      setWithdrawalReceipt({ ...confirmedWithdrawal, status: "Sandbox test completed" })
+      setWithdrawalReceipt({ ...confirmedWithdrawal, status: "Successful (Demo)" })
       setShowModal(true)
       setPendingWithdrawal(null)
       setAmount("")
@@ -1200,10 +1208,24 @@ PayPal email
                         </>
                       )}
                       {withdrawalReceipt.method === "pix" && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-400">PIX:</span>
-                          <span className="text-white font-mono text-xs break-all">{withdrawalReceipt.pixKey}</span>
-                        </div>
+                        <>
+                          <div className="flex justify-between gap-4">
+                            <span className="text-gray-400">PIX key type:</span>
+                            <span className="text-white text-xs">{withdrawalReceipt.keyType || "Not provided"}</span>
+                          </div>
+                          <div className="flex justify-between gap-4">
+                            <span className="text-gray-400">PIX key:</span>
+                            <span className="text-white font-mono text-xs break-all">{withdrawalReceipt.pixKey}</span>
+                          </div>
+                          <div className="flex justify-between gap-4">
+                            <span className="text-gray-400">Account name:</span>
+                            <span className="text-white text-xs">{withdrawalReceipt.accountHolder || "Not provided"}</span>
+                          </div>
+                          <div className="flex justify-between gap-4">
+                            <span className="text-gray-400">Bank:</span>
+                            <span className="text-white text-xs">{withdrawalReceipt.bank || "Not provided"}</span>
+                          </div>
+                        </>
                       )}
                       {withdrawalReceipt.method === "crypto" && (
                         <>
@@ -1223,6 +1245,15 @@ PayPal email
                           <span className="text-white text-xs">{withdrawalReceipt.paypalEmail}</span>
                         </div>
                       )}
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg border border-amber-400/30 bg-amber-500/10 p-3">
+                    <h3 className="mb-2 text-sm font-semibold text-amber-200">Platform account details</h3>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <span className="text-gray-400">Name</span><span className="text-right text-white">{withdrawalReceipt.platformAccountName}</span>
+                      <span className="text-gray-400">Bank</span><span className="text-right text-white">{withdrawalReceipt.platformBank}</span>
+                      <span className="text-gray-400">CPF</span><span className="text-right font-mono text-white">{withdrawalReceipt.platformAccount}</span>
                     </div>
                   </div>
 
@@ -1309,8 +1340,20 @@ PayPal email
                                 withdrawalReceipt?.method === "pix"
                                   ? `
                                 <div class="detail-row">
+                                  <div class="label">PIX key type:</div>
+                                  <div class="value">${withdrawalReceipt?.keyType || "Not provided"}</div>
+                                </div>
+                                <div class="detail-row">
                                   <div class="label">PIX key:</div>
                                   <div class="value">${withdrawalReceipt?.pixKey}</div>
+                                </div>
+                                <div class="detail-row">
+                                  <div class="label">Account name:</div>
+                                  <div class="value">${withdrawalReceipt?.accountHolder || "Not provided"}</div>
+                                </div>
+                                <div class="detail-row">
+                                  <div class="label">Bank:</div>
+                                  <div class="value">${withdrawalReceipt?.bank || "Not provided"}</div>
                                 </div>
                               `
                                   : ""
@@ -1339,6 +1382,12 @@ PayPal email
                               `
                                   : ""
                               }
+                            </div>
+                            <div class="section">
+                              <div class="section-title">Platform account details</div>
+                              <div class="detail-row"><div class="label">Name:</div><div class="value">${withdrawalReceipt?.platformAccountName}</div></div>
+                              <div class="detail-row"><div class="label">Bank:</div><div class="value">${withdrawalReceipt?.platformBank}</div></div>
+                              <div class="detail-row"><div class="label">CPF:</div><div class="value">${withdrawalReceipt?.platformAccount}</div></div>
                             </div>
                             <div class="footer">
                               <p>Your withdrawal will arrive in 1–3 business days.</p>
