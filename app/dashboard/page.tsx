@@ -283,10 +283,7 @@ export default function DashboardPage() {
                 >
                   {showBalance ? formatCurrency(user.balance) : "$ ••••••"}
                 </div>
-                <p className="text-xs text-gray-500 flex items-center mt-2">
-                  <span className="inline-block w-2 h-2 bg-[#f9a826] rounded-full mr-2 animate-pulse"></span>
-                  Demo preview balance — not withdrawable
-                </p>
+
               </CardContent>
             </Card>
 
