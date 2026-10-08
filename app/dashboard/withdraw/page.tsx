@@ -39,8 +39,8 @@ interface CryptoCurrency {
 }
 
 const fiatCurrencies = [
-  { value: "USD", label: "US Dollar (USD)", symbol: "$" },
   { value: "BRL", label: "Brazilian Real (BRL)", symbol: "R$" },
+  { value: "USD", label: "US Dollar (USD)", symbol: "$" },
   { value: "EUR", label: "Euro (EUR)", symbol: "€" },
   { value: "GBP", label: "British Pound (GBP)", symbol: "£" },
   { value: "CAD", label: "Canadian Dollar (CAD)", symbol: "C$" },
@@ -363,7 +363,7 @@ export default function WithdrawPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-xl font-bold text-white">1-3 Tage</div>
+              <div className="text-xl font-bold text-white">1–3 business days</div>
               <p className="text-xs text-gray-400 mt-2 flex items-center">
                 <Zap className="h-3 w-3 mr-1 text-blue-400" />
                 Fast processing
@@ -632,19 +632,15 @@ export default function WithdrawPage() {
                     <Label htmlFor="pixCurrency" className="text-white">
                       Withdrawal currency
                     </Label>
-                    <Select value={fiatCurrency} onValueChange={setFiatCurrency}>
+                    <Select value="BRL" onValueChange={() => setFiatCurrency("BRL")}>
                       <SelectTrigger
                         id="pixCurrency"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Select a currency" />
+                        <SelectValue />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white">
-                        {fiatCurrencies.map((currency) => (
-                          <SelectItem key={currency.value} value={currency.value}>
-                            {currency.symbol} {currency.label}
-                          </SelectItem>
-                        ))}
+                        <SelectItem value="BRL">R$ Brazilian Real (BRL)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
