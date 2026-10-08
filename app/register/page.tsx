@@ -94,7 +94,7 @@ export default function RegisterPage() {
         country: country || "US", // Default to US if no country selected
       })
 
-      if (result.success) {
+      if (result) {
         setSuccess(true)
         setTimeout(() => {
           router.push("/dashboard")
