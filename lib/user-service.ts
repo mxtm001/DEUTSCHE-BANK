@@ -39,8 +39,6 @@ class UserService {
   private currentUser: UserProfile | null = null
 
   async login(email: string, password: string): Promise<UserProfile> {
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
     const user: UserProfile = {
       id: "1",
       email: email,
@@ -63,8 +61,6 @@ balance: 0,
   }
 
   async register(userData: any): Promise<UserProfile> {
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
     const user: UserProfile = {
       id: Date.now().toString(),
       email: userData.email,
@@ -127,8 +123,6 @@ balance: 0,
   }
 
   async getUserInvestments(): Promise<Investment[]> {
-    await new Promise((resolve) => setTimeout(resolve, 500))
-
     return [
       {
         id: "1",
@@ -189,8 +183,6 @@ balance: 0,
   }
 
   async getUserTransactions(): Promise<Transaction[]> {
-    await new Promise((resolve) => setTimeout(resolve, 500))
-
     return [
       {
         id: "txn_withdrawal_3.5m",
@@ -244,7 +236,6 @@ balance: 0,
   }
 
   async updateProfile(updates: Partial<UserProfile>): Promise<UserProfile> {
-    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     if (this.currentUser) {
       this.currentUser = { ...this.currentUser, ...updates }
@@ -257,7 +248,6 @@ balance: 0,
   }
 
   async withdraw(amount: number, method: string, address?: string): Promise<{ success: boolean; message: string }> {
-    await new Promise((resolve) => setTimeout(resolve, 1500))
 
     return {
       success: false,
@@ -266,7 +256,6 @@ balance: 0,
   }
 
   async deposit(amount: number, method: string): Promise<{ success: boolean; message: string }> {
-    await new Promise((resolve) => setTimeout(resolve, 1500))
 
     if (this.currentUser) {
       this.currentUser.balance += amount

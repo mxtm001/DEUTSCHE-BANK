@@ -291,7 +291,7 @@ export default function WithdrawPage() {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("de-DE", {
       style: "currency",
-      currency: "EUR",
+      currency: "USD",
     }).format(value)
   }
 

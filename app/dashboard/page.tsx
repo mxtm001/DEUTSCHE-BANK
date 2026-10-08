@@ -56,9 +56,7 @@ export default function DashboardPage() {
 
     const handleWithdrawalStart = () => {
       setBalanceFading(true)
-      setTimeout(() => {
-        setBalanceFading(false)
-      }, 2000)
+      setBalanceFading(false)
     }
 
     window.addEventListener("withdrawalProcessing", handleWithdrawalStart)
@@ -73,9 +71,9 @@ export default function DashboardPage() {
   }
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("de-DE", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "EUR",
+      currency: "USD",
     }).format(amount)
   }
 
@@ -250,7 +248,7 @@ export default function DashboardPage() {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 {t.welcome}, {user?.firstName || user?.name || "User"}!
               </h1>
-              <p className="text-gray-400 mt-1">Managing your €150.000.000 {t.portfolio}</p>
+              <p className="text-gray-400 mt-1">Managing your $0.00 {t.portfolio}</p>
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/dashboard/deposit">
@@ -282,7 +280,7 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(0) : "€ ••••••"}
+                  {showBalance ? formatCurrency(0) : "$ ••••••"}
                 </div>
                 <p className="text-xs text-gray-500 flex items-center mt-2">
                   <span className="inline-block w-2 h-2 bg-[#f9a826] rounded-full mr-2 animate-pulse"></span>
@@ -302,7 +300,7 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(0) : "€ ••••••"}
+                  {showBalance ? formatCurrency(0) : "$ ••••••"}
                 </div>
                 <p className="text-xs text-gray-400 flex items-center mt-2">
                   <ArrowUpRight className="h-3 w-3 mr-1" />
@@ -322,7 +320,7 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(0) : "€ ••••••"}
+                  {showBalance ? formatCurrency(0) : "$ ••••••"}
                 </div>
                 <p className="text-xs text-green-400 flex items-center mt-2">
                   <TrendingUp className="h-3 w-3 mr-1" />
