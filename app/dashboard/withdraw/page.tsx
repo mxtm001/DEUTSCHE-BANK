@@ -299,7 +299,7 @@ export default function WithdrawPage() {
       setShowModal(true)
       setPendingWithdrawal(null)
       setAmount("")
-    }, 1400)
+    }, 3000)
   }
 
   const handleCloseRestriction = () => {
@@ -1006,7 +1006,8 @@ PayPal email
               <div className="w-full rounded-full bg-slate-700" aria-label="Withdrawal processing">
                 <div className="h-2 w-2/3 animate-pulse rounded-full bg-gradient-to-r from-blue-400 to-cyan-400" />
               </div>
-              <p className="text-xs text-gray-400">Verifying destination and creating your receipt...</p>
+              <p className="text-sm font-medium text-blue-200">Step 1 of 2: verifying destination</p>
+              <p className="text-xs text-gray-400">Please wait while we securely prepare your withdrawal receipt.</p>
             </div>
           </DialogContent>
         </Dialog>
