@@ -159,40 +159,24 @@ const brazilianBanks = [
   { value: "999", label: "Outro Banco" },
 ]
 
-const germanBanks = [
-  { value: "deutsche-bank", label: "Global Trust Bank" },
-  { value: "commerzbank", label: "Commerzbank AG" },
-  { value: "dresdner", label: "Dresdner Bank" },
-  { value: "hypo-vereinsbank", label: "HypoVereinsbank" },
-  { value: "westdeutsche-landesbank", label: "Westdeutsche Landesbank" },
-  { value: "norddeutsche-landesbank", label: "Norddeutsche Landesbank" },
-  { value: "landesbank-berlin", label: "Landesbank Berlin" },
-  { value: "bayerische-landesbank", label: "Bayerische Landesbank" },
-  { value: "nord-lb", label: "Nord LB" },
-  { value: "sachsen-lb", label: "Sachsen LB" },
-  { value: "westlb", label: "Westdeutsche Landesbank (WestLB)" },
-  { value: "sparkasse", label: "Sparkasse" },
-  { value: "ing-diba", label: "ING-DiBa" },
-  { value: "comdirect", label: "Comdirect Bank" },
-  { value: "ing", label: "ING" },
-  { value: "consorsbank", label: "Consorsbank" },
-  { value: "flatex", label: "Flatex" },
-  { value: "dkb", label: "Digital Credit Bank" },
-  { value: "santander", label: "Santander Consumer Bank" },
+const internationalBanks = [
+  { value: "chase", label: "Chase Bank" },
+  { value: "bank-of-america", label: "Bank of America" },
+  { value: "wells-fargo", label: "Wells Fargo" },
+  { value: "citibank", label: "Citibank" },
+  { value: "capital-one", label: "Capital One" },
   { value: "hsbc", label: "HSBC" },
-  { value: "ubs", label: "UBS" },
+  { value: "barclays", label: "Barclays" },
+  { value: "lloyds", label: "Lloyds Bank" },
+  { value: "santander", label: "Santander Bank" },
   { value: "credit-suisse", label: "Credit Suisse" },
+  { value: "ubs", label: "UBS" },
   { value: "jp-morgan", label: "JPMorgan Chase Bank" },
   { value: "goldman-sachs", label: "Goldman Sachs Bank" },
-  { value: "deutsche-boerse", label: "Global Exchange Bank" },
-  { value: "postbank", label: "Postbank" },
-  { value: "targobank", label: "Targobank" },
-  { value: "fidor", label: "Fidor Bank" },
   { value: "revolut", label: "Revolut Bank" },
-  { value: "wise", label: "Wise (TransferWise)" },
-  { value: "bunq", label: "Bunq" },
+  { value: "wise", label: "Wise" },
   { value: "n26", label: "N26" },
-  { value: "raiffeisen-bank", label: "Raiffeisen Bank" },
+  { value: "other", label: "Other Bank" },
 ]
 
 export default function WithdrawPage() {
@@ -418,7 +402,7 @@ export default function WithdrawPage() {
                   <Input
                     id="amount"
                     type="number"
-                    placeholder="Betrag eingeben"
+                    placeholder="Amount eingeben"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     className="pl-8 h-14 bg-[#162040]/50 border-[#253256] text-white text-lg focus:border-[#f9a826] transition-colors"
@@ -551,7 +535,7 @@ export default function WithdrawPage() {
                     <Select
                       value={bankDetails.bankName}
                       onValueChange={(value) => {
-                        const bank = germanBanks.find((b) => b.value === value)
+                        const bank = internationalBanks.find((b) => b.value === value)
                         setBankDetails({ ...bankDetails, bankName: value, swiftCode: "" })
                       }}
                     >
@@ -562,7 +546,7 @@ export default function WithdrawPage() {
                         <SelectValue placeholder="Select your bank" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white max-h-96">
-                        {germanBanks.map((bank) => (
+                        {internationalBanks.map((bank) => (
                           <SelectItem
                             key={bank.value}
                             value={bank.value}
@@ -849,7 +833,7 @@ export default function WithdrawPage() {
                 <div className="space-y-3">
                   <div className="bg-slate-700/50 rounded-lg p-4 space-y-3 border border-slate-600">
                     <div className="flex justify-between">
-                      <span className="text-gray-400 text-sm">Betrag:</span>
+                      <span className="text-gray-400 text-sm">Amount:</span>
                       <span className="text-white font-semibold">{formatCurrency(pendingWithdrawal.amount)}</span>
                     </div>
                     <div className="flex justify-between">
@@ -971,7 +955,7 @@ export default function WithdrawPage() {
                 {pendingWithdrawal && (
                   <div className="bg-slate-700/50 rounded-lg p-4 space-y-2 border border-slate-600">
                     <div className="flex justify-between">
-                      <span className="text-gray-400 text-xs">Betrag:</span>
+                      <span className="text-gray-400 text-xs">Amount:</span>
                       <span className="text-white font-semibold text-sm">{formatCurrency(pendingWithdrawal.amount)}</span>
                     </div>
                     <div className="flex justify-between">
@@ -1037,7 +1021,7 @@ export default function WithdrawPage() {
                         <p className="text-white font-semibold text-xs">{withdrawalReceipt.date}</p>
                       </div>
                       <div>
-                        <p className="text-gray-400 text-xs mb-0.5">Betrag</p>
+                        <p className="text-gray-400 text-xs mb-0.5">Amount</p>
                         <p className="text-lg font-bold text-green-400">{formatCurrency(withdrawalReceipt.amount)}</p>
                       </div>
                       <div>
