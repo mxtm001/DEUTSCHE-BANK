@@ -17,8 +17,8 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[#050806] text-white">
-      <header className="container mx-auto py-4 px-4 flex justify-between items-center sticky top-0 bg-gradient-to-r from-[#050505]/95 to-[#0b1710]/95 backdrop-blur-lg z-50 border-b border-[#39d98a]/20 transition-all duration-300">
+    <div className="min-h-screen bg-[#050e24] text-white">
+      <header className="container mx-auto py-4 px-4 flex justify-between items-center sticky top-0 bg-gradient-to-r from-[#0a1735]/95 to-[#162040]/95 backdrop-blur-lg z-50 border-b border-[#f9a826]/20 transition-all duration-300">
         <Link href="/" className="flex items-center hover:scale-110 transition-transform duration-300">
           <img src="/mxtm-logo.png" alt="MXTM Crypto Platform" className="h-12 w-12 rounded-xl object-cover" />
           <span className="ml-2 text-white font-medium">
@@ -27,12 +27,12 @@ export default function HomePage() {
         </Link>
         <div className="flex gap-4">
           <Link href="/register">
-            <Button className="bg-gradient-to-r from-[#39d98a] to-[#1fbf73] hover:from-[#39d98a]/90 hover:to-[#1fbf73]/90 text-black font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#39d98a]/50">
+            <Button className="bg-gradient-to-r from-[#f9a826] to-[#f4c15d] hover:from-[#f9a826]/90 hover:to-[#f4c15d]/90 text-black font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#f9a826]/50">
               Register
             </Button>
           </Link>
           <Link href="/login">
-            <Button className="bg-gradient-to-r from-[#10251a] to-[#1b294b] hover:from-[#10251a]/90 hover:to-[#1b294b]/90 text-white font-medium transition-all duration-300 hover:scale-105 border border-[#39d98a]/30">
+            <Button className="bg-gradient-to-r from-[#162040] to-[#253256] hover:from-[#162040]/90 hover:to-[#253256]/90 text-white font-medium transition-all duration-300 hover:scale-105 border border-[#f9a826]/30">
               Login
             </Button>
           </Link>
@@ -54,7 +54,7 @@ export default function HomePage() {
           <Link href="/register">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#39d98a] to-[#1fbf73] hover:from-[#39d98a]/90 hover:to-[#1fbf73]/90 text-black font-medium transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#39d98a]/50"
+              className="bg-gradient-to-r from-[#f9a826] to-[#f4c15d] hover:from-[#f9a826]/90 hover:to-[#f4c15d]/90 text-black font-medium transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#f9a826]/50"
             >
               Start Investing <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -63,7 +63,7 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-[#39d98a]/50 text-white hover:bg-gradient-to-r hover:from-[#39d98a] hover:to-[#1fbf73] hover:text-black bg-transparent transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#39d98a]/30"
+              className="border-[#f9a826]/50 text-white hover:bg-gradient-to-r hover:from-[#f9a826] hover:to-[#f4c15d] hover:text-black bg-transparent transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#f9a826]/30"
             >
               Login to Account
             </Button>
@@ -72,17 +72,17 @@ export default function HomePage() {
       </section>
 
       <section id="plans" className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#39d98a] to-[#ffd166] bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent">
           Investment Plans
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="bg-gradient-to-br from-[#09150e] to-[#0d1f14] border-[#1d3b29] hover:border-[#39d98a] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#39d98a]/30">
+          <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256] hover:border-[#f9a826] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#f9a826]/30">
             <CardHeader>
               <CardTitle className="text-white">Starter Plan</CardTitle>
               <CardDescription className="text-gray-300">Perfect for beginners</CardDescription>
             </CardHeader>
             <CardContent className="text-white">
-              <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#39d98a] to-[#1fbf73] bg-clip-text text-transparent">
+              <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent">
                 $100 - $999
               </div>
               <ul className="space-y-2">
@@ -103,18 +103,18 @@ export default function HomePage() {
           </Card>
 
           <Card
-            className="bg-gradient-to-br from-[#09150e] to-[#0d1f14] border-[#39d98a] hover:border-[#39d98a] transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#39d98a]/50 relative"
+            className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#f9a826] hover:border-[#f9a826] transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#f9a826]/50 relative"
             style={{ animationDelay: "1s" }}
           >
             <CardHeader>
-              <Badge className="w-fit bg-gradient-to-r from-[#39d98a] to-[#1fbf73] text-black mb-2">
+              <Badge className="w-fit bg-gradient-to-r from-[#f9a826] to-[#f4c15d] text-black mb-2">
                 Most Popular
               </Badge>
               <CardTitle className="text-white">Professional Plan</CardTitle>
               <CardDescription className="text-gray-300">For serious investors</CardDescription>
             </CardHeader>
             <CardContent className="text-white">
-              <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#39d98a] to-[#1fbf73] bg-clip-text text-transparent">
+              <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent">
                 $1,000 - $4,999
               </div>
               <ul className="space-y-2">
@@ -135,7 +135,7 @@ export default function HomePage() {
           </Card>
 
           <Card
-            className="bg-gradient-to-br from-[#09150e] to-[#0d1f14] border-[#1d3b29] hover:border-[#39d98a] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#39d98a]/30"
+            className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256] hover:border-[#f9a826] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#f9a826]/30"
             style={{ animationDelay: "2s" }}
           >
             <CardHeader>
@@ -143,7 +143,7 @@ export default function HomePage() {
               <CardDescription className="text-gray-300">Maximum returns</CardDescription>
             </CardHeader>
             <CardContent className="text-white">
-              <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#39d98a] to-[#1fbf73] bg-clip-text text-transparent">
+              <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent">
                 $5,000+
               </div>
               <ul className="space-y-2">
@@ -166,27 +166,27 @@ export default function HomePage() {
       </section>
 
       <section id="features" className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#39d98a] to-[#ffd166] bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent">
           Why Choose MXTM?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center group hover:scale-110 transition-all duration-300">
-            <div className="bg-gradient-to-br from-[#09150e] to-[#0d1f14] p-6 rounded-lg border border-[#1d3b29] group-hover:border-[#39d98a] group-hover:shadow-2xl group-hover:shadow-[#39d98a]/30 transition-all duration-300">
-              <Shield className="h-12 w-12 bg-gradient-to-r from-[#39d98a] to-[#1fbf73] bg-clip-text text-transparent mx-auto mb-4 group-hover:scale-125 transition-transform duration-300" />
+            <div className="bg-gradient-to-br from-[#0a1735] to-[#162040] p-6 rounded-lg border border-[#253256] group-hover:border-[#f9a826] group-hover:shadow-2xl group-hover:shadow-[#f9a826]/30 transition-all duration-300">
+              <Shield className="h-12 w-12 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent mx-auto mb-4 group-hover:scale-125 transition-transform duration-300" />
               <h3 className="text-xl font-semibold mb-2 text-white">Secure Platform</h3>
               <p className="text-gray-300">Bank-level security with SSL encryption and cold storage</p>
             </div>
           </div>
           <div className="text-center group hover:scale-110 transition-all duration-300">
-            <div className="bg-gradient-to-br from-[#09150e] to-[#0d1f14] p-6 rounded-lg border border-[#1d3b29] group-hover:border-[#39d98a] group-hover:shadow-2xl group-hover:shadow-[#39d98a]/30 transition-all duration-300">
-              <TrendingUp className="h-12 w-12 bg-gradient-to-r from-[#39d98a] to-[#1fbf73] bg-clip-text text-transparent mx-auto mb-4 group-hover:scale-125 transition-transform duration-300" />
+            <div className="bg-gradient-to-br from-[#0a1735] to-[#162040] p-6 rounded-lg border border-[#253256] group-hover:border-[#f9a826] group-hover:shadow-2xl group-hover:shadow-[#f9a826]/30 transition-all duration-300">
+              <TrendingUp className="h-12 w-12 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent mx-auto mb-4 group-hover:scale-125 transition-transform duration-300" />
               <h3 className="text-xl font-semibold mb-2 text-white">High Returns</h3>
               <p className="text-gray-300">Consistent daily returns with professional trading strategies</p>
             </div>
           </div>
           <div className="text-center group hover:scale-110 transition-all duration-300">
-            <div className="bg-gradient-to-br from-[#09150e] to-[#0d1f14] p-6 rounded-lg border border-[#1d3b29] group-hover:border-[#39d98a] group-hover:shadow-2xl group-hover:shadow-[#39d98a]/30 transition-all duration-300">
-              <Users className="h-12 w-12 bg-gradient-to-r from-[#39d98a] to-[#1fbf73] bg-clip-text text-transparent mx-auto mb-4 group-hover:scale-125 transition-transform duration-300" />
+            <div className="bg-gradient-to-br from-[#0a1735] to-[#162040] p-6 rounded-lg border border-[#253256] group-hover:border-[#f9a826] group-hover:shadow-2xl group-hover:shadow-[#f9a826]/30 transition-all duration-300">
+              <Users className="h-12 w-12 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent mx-auto mb-4 group-hover:scale-125 transition-transform duration-300" />
               <h3 className="text-xl font-semibold mb-2 text-white">Expert Team</h3>
               <p className="text-gray-300">Professional traders with years of market experience</p>
             </div>
@@ -195,8 +195,8 @@ export default function HomePage() {
       </section>
 
       <section className="container mx-auto py-16 px-4 text-center">
-        <div className="bg-gradient-to-r from-[#09150e] via-[#0d1f14] to-[#0b1710] p-8 rounded-lg border border-[#39d98a]/30 hover:border-[#39d98a] transition-all duration-300 hover:shadow-2xl hover:shadow-[#39d98a]/30">
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-[#39d98a] to-[#1fbf73] bg-clip-text text-transparent">
+        <div className="bg-gradient-to-r from-[#0a1735] via-[#162040] to-[#0b1710] p-8 rounded-lg border border-[#f9a826]/30 hover:border-[#f9a826] transition-all duration-300 hover:shadow-2xl hover:shadow-[#f9a826]/30">
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-[#f9a826] to-[#f4c15d] bg-clip-text text-transparent">
             Ready to Start Investing?
           </h2>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
@@ -206,7 +206,7 @@ export default function HomePage() {
           <Link href="/register">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-[#39d98a] to-[#1fbf73] hover:from-[#39d98a]/90 hover:to-[#1fbf73]/90 text-black font-medium transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#39d98a]/50"
+              className="bg-gradient-to-r from-[#f9a826] to-[#f4c15d] hover:from-[#f9a826]/90 hover:to-[#f4c15d]/90 text-black font-medium transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#f9a826]/50"
             >
               Get Started Now <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -214,20 +214,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="bg-gradient-to-r from-[#050a1c] to-[#09150e] py-8 border-t border-[#39d98a]/20 transition-all duration-300">
+      <footer className="bg-gradient-to-r from-[#050a1c] to-[#0a1735] py-8 border-t border-[#f9a826]/20 transition-all duration-300">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <p className="text-gray-400">© 2024 MXTM CRYPTO PLATFORM. All rights reserved.</p>
             </div>
             <div className="flex gap-4 flex-wrap">
-              <Link href="/terms" className="text-gray-400 hover:text-[#39d98a] transition-colors duration-300">
+              <Link href="/terms" className="text-gray-400 hover:text-[#f9a826] transition-colors duration-300">
                 Terms of Service
               </Link>
-              <Link href="/privacy" className="text-gray-400 hover:text-[#39d98a] transition-colors duration-300">
+              <Link href="/privacy" className="text-gray-400 hover:text-[#f9a826] transition-colors duration-300">
                 Privacy Policy
               </Link>
-              <Link href="/contact" className="text-gray-400 hover:text-[#39d98a] transition-colors duration-300">
+              <Link href="/contact" className="text-gray-400 hover:text-[#f9a826] transition-colors duration-300">
                 Contact Us
               </Link>
             </div>
