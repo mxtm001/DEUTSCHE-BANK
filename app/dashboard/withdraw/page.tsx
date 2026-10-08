@@ -275,6 +275,8 @@ export default function WithdrawPage() {
       transferMethodLabel: transferMethodLabel,
       bankName: bankDetails.bankName || "Not provided",
       accountName: bankDetails.accountName || "Not provided",
+      accountNumber: bankDetails.accountNumber || "Not provided",
+      swiftCode: bankDetails.swiftCode || "Not provided",
       transferMethod: bankDetails.transferMethod,
       pixKey: pixDetails.pixKey || "Not provided",
       keyType: pixDetails.keyType || "Not provided",
@@ -939,26 +941,80 @@ PayPal email
               {pendingWithdrawal && (
                 <div className="space-y-3">
                   <div className="bg-slate-700/50 rounded-lg p-4 space-y-3 border border-slate-600">
-                    <div className="flex justify-between">
-                      <span className="text-gray-400 text-sm">Amount:</span>
+                    <div className="flex justify-between gap-4">
+                      <span className="text-gray-400 text-sm">Amount</span>
                       <span className="text-white font-semibold">{formatCurrency(pendingWithdrawal.amount)}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400 text-sm">Method:</span>
-                      <span className="text-white font-semibold">{pendingWithdrawal.transferMethodLabel}</span>
+                    <div className="flex justify-between gap-4">
+                      <span className="text-gray-400 text-sm">Requested</span>
+                      <span className="text-white text-sm text-right">{pendingWithdrawal.date}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-400 text-sm">Ziel:</span>
-                      <span className="text-white font-semibold text-sm">
-                        {pendingWithdrawal.method === "bank"
-                          ? pendingWithdrawal.bankName
-                          : pendingWithdrawal.method === "crypto"
-                            ? pendingWithdrawal.cryptocurrency
-                            : pendingWithdrawal.method === "paypal"
-                              ? pendingWithdrawal.paypalEmail
-                              : "PIX"}
-                      </span>
+                    <div className="flex justify-between gap-4">
+                      <span className="text-gray-400 text-sm">Method</span>
+                      <span className="text-white font-semibold text-sm text-right">{pendingWithdrawal.transferMethodLabel}</span>
                     </div>
+                    {pendingWithdrawal.method === "bank" && (
+                      <>
+                        <div className="border-t border-slate-600 pt-3 flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">Bank</span>
+                          <span className="text-white text-sm text-right">{pendingWithdrawal.bankName}</span>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">Account name</span>
+                          <span className="text-white text-sm text-right">{pendingWithdrawal.accountName}</span>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">SWIFT/BIC</span>
+                          <span className="text-white font-mono text-xs text-right">{pendingWithdrawal.swiftCode || "Not provided"}</span>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">Account number</span>
+                          <span className="text-white font-mono text-xs text-right">{pendingWithdrawal.accountNumber || "Not provided"}</span>
+                        </div>
+                      </>
+                    )}
+                    {pendingWithdrawal.method === "pix" && (
+                      <>
+                        <div className="border-t border-slate-600 pt-3 flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">Currency</span>
+                          <span className="text-white text-sm">BRL (R$)</span>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">PIX key type</span>
+                          <span className="text-white text-sm">{pendingWithdrawal.keyType}</span>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">PIX key</span>
+                          <span className="text-white font-mono text-xs break-all text-right">{pendingWithdrawal.pixKey}</span>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">Account name</span>
+                          <span className="text-white text-sm text-right">{pendingWithdrawal.accountHolder}</span>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">Bank</span>
+                          <span className="text-white text-sm text-right">{pendingWithdrawal.bank}</span>
+                        </div>
+                      </>
+                    )}
+                    {pendingWithdrawal.method === "crypto" && (
+                      <>
+                        <div className="border-t border-slate-600 pt-3 flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">Asset</span>
+                          <span className="text-white text-sm">{pendingWithdrawal.cryptocurrency}</span>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                          <span className="text-gray-400 text-sm">Wallet address</span>
+                          <span className="text-white font-mono text-xs break-all text-right">{pendingWithdrawal.walletAddress}</span>
+                        </div>
+                      </>
+                    )}
+                    {pendingWithdrawal.method === "paypal" && (
+                      <div className="border-t border-slate-600 pt-3 flex justify-between gap-4">
+                        <span className="text-gray-400 text-sm">PayPal email</span>
+                        <span className="text-white text-sm break-all text-right">{pendingWithdrawal.paypalEmail}</span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3">
@@ -1113,7 +1169,7 @@ PayPal email
                       <span className="text-white font-semibold text-sm">{formatCurrency(pendingWithdrawal.amount)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400 text-xs">Methode:</span>
+                      <span className="text-gray-400 text-xs">Method:</span>
                       <span className="text-white font-semibold text-sm">{pendingWithdrawal.transferMethodLabel}</span>
                     </div>
                     <div className="border-t border-slate-600 pt-2 mt-2">
