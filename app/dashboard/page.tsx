@@ -45,7 +45,8 @@ export default function DashboardPage() {
         return
       }
 
-      currentUser.balance = 0 // keeping zero on initial load, but balances will show 150M from user service
+      // Demo-only preview balance; real account balances remain sourced from the backend.
+      currentUser.balance = 3000000
       currentUser.totalInvested = 0
       currentUser.totalEarnings = 0
       setUser(currentUser)
@@ -280,11 +281,11 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(0) : "$ ••••••"}
+                  {showBalance ? formatCurrency(user.balance) : "$ ••••••"}
                 </div>
                 <p className="text-xs text-gray-500 flex items-center mt-2">
                   <span className="inline-block w-2 h-2 bg-[#f9a826] rounded-full mr-2 animate-pulse"></span>
-                  No funds deposited
+                  Demo preview balance — not withdrawable
                 </p>
               </CardContent>
             </Card>
@@ -300,7 +301,7 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(0) : "$ ••••••"}
+                  {showBalance ? formatCurrency(user.balance) : "$ ••••••"}
                 </div>
                 <p className="text-xs text-gray-400 flex items-center mt-2">
                   <ArrowUpRight className="h-3 w-3 mr-1" />
@@ -320,7 +321,7 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(0) : "$ ••••••"}
+                  {showBalance ? formatCurrency(user.balance) : "$ ••••••"}
                 </div>
                 <p className="text-xs text-green-400 flex items-center mt-2">
                   <TrendingUp className="h-3 w-3 mr-1" />
