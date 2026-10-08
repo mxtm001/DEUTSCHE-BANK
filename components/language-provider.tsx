@@ -23,17 +23,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("preferredLanguage", "en")
   }, [])
 
-  const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang)
-    setTranslations(getTranslations(lang))
-    localStorage.setItem("preferredLanguage", lang)
+  const handleSetLanguage = (_lang: Language) => {
+    setLanguage("en")
+    setTranslations(getTranslations("en"))
+    localStorage.setItem("preferredLanguage", "en")
   }
 
-  const handleSetCountry = (countryCode: string) => {
-    const detectedLang = getLanguageByCountry(countryCode)
-    if (detectedLang !== language) {
-      handleSetLanguage(detectedLang)
-    }
+  const handleSetCountry = (_countryCode: string) => {
+    handleSetLanguage("en")
   }
 
   return (

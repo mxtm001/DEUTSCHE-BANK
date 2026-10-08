@@ -557,7 +557,7 @@ export default function History() {
                   <p className="text-gray-400 text-sm">Amount</p>
                   <p className="text-white font-semibold text-lg">
                     €
-                    {selectedTransaction.amount.toLocaleString("de-DE", {
+                    {selectedTransaction.amount.toLocaleString("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     })}

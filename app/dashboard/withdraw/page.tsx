@@ -179,9 +179,9 @@ const germanBanks = [
   { value: "flatex", label: "Flatex" },
   { value: "dkb", label: "Digital Credit Bank" },
   { value: "santander", label: "Santander Consumer Bank" },
-  { value: "hsbc", label: "HSBC Germany" },
-  { value: "ubs", label: "UBS Deutschland" },
-  { value: "credit-suisse", label: "Credit Suisse Deutschland" },
+  { value: "hsbc", label: "HSBC" },
+  { value: "ubs", label: "UBS" },
+  { value: "credit-suisse", label: "Credit Suisse" },
   { value: "jp-morgan", label: "JPMorgan Chase Bank" },
   { value: "goldman-sachs", label: "Goldman Sachs Bank" },
   { value: "deutsche-boerse", label: "Global Exchange Bank" },
@@ -621,7 +621,7 @@ export default function WithdrawPage() {
                 <TabsContent value="pix" className="space-y-5 mt-6">
                   <Alert className="bg-blue-500/10 border-blue-500/30 text-blue-300">
                     <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>PIX-Abhebungen werden sofort auf Ihr Konto verarbeitet</AlertDescription>
+                    <AlertDescription>PIX withdrawals are processed instantly to your account</AlertDescription>
                   </Alert>
 
                   <div className="space-y-2">
@@ -776,7 +776,7 @@ export default function WithdrawPage() {
                 <TabsContent value="paypal" className="space-y-5 mt-6">
                   <Alert className="bg-blue-500/10 border-blue-500/30 text-blue-300">
                     <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>PayPal-Abhebungen werden innerhalb von 24 Stunden verarbeitet</AlertDescription>
+                    <AlertDescription>PayPal withdrawals are processed within 24 hours</AlertDescription>
                   </Alert>
                   <div className="space-y-2">
                     <Label htmlFor="paypalEmail" className="text-white">
@@ -841,8 +841,8 @@ export default function WithdrawPage() {
               </div>
 
               <DialogHeader className="text-center space-y-2">
-                <DialogTitle className="text-lg font-bold text-white">Abhebung bestätigen</DialogTitle>
-                <DialogDescription className="sr-only">Bitte bestätigen Sie Ihre Abhebung</DialogDescription>
+                <DialogTitle className="text-lg font-bold text-white">Confirm withdrawal</DialogTitle>
+                <DialogDescription className="sr-only">Please confirm your withdrawal</DialogDescription>
               </DialogHeader>
 
               {pendingWithdrawal && (
@@ -883,13 +883,13 @@ export default function WithdrawPage() {
                   onClick={() => setShowConfirmation(false)}
                   className="flex-1 h-10 bg-slate-700 hover:bg-slate-600 text-white font-semibold"
                 >
-                  Abbrechen
+                  Cancel
                 </Button>
                 <Button
                   onClick={handleConfirmWithdrawal}
                   className="flex-1 h-10 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold"
                 >
-                  Bestätigen
+                  Confirm
                 </Button>
               </div>
             </div>
@@ -917,15 +917,15 @@ export default function WithdrawPage() {
               </div>
 
               <DialogHeader className="text-center space-y-2">
-                <DialogTitle className="text-lg font-bold text-white">Abhebung erfolgreich</DialogTitle>
-                <DialogDescription className="sr-only">Ihre Abhebung wurde erfolgreich verarbeitet</DialogDescription>
+                <DialogTitle className="text-lg font-bold text-white">Withdrawal successful</DialogTitle>
+                <DialogDescription className="sr-only">Your withdrawal was processed successfully</DialogDescription>
               </DialogHeader>
 
               <div className="p-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-lg border border-green-500/20">
                 <p className="text-center leading-relaxed">
-                  <strong className="block text-base mb-2 text-white">Abhebung verarbeitet</strong>
+                  <strong className="block text-base mb-2 text-white">Withdrawal processed</strong>
                   <span className="text-gray-300 text-sm">
-                    Ihr Abhebungsantrag in Höhe von{" "}
+                    Your withdrawal request for{" "}
                     <strong className="text-green-400">{formatCurrency(Number.parseFloat(amount) || 0)}</strong> wurde
                     erfolgreich verarbeitet.
                   </span>
@@ -934,7 +934,7 @@ export default function WithdrawPage() {
 
               <div className="text-center py-2 bg-gradient-to-r from-emerald-900/30 to-green-900/30 rounded-lg border border-green-500/20">
                 <div className="text-xs text-gray-400 mb-1">Status</div>
-                <div className="text-base font-bold text-green-400">Erfolgreich ✓</div>
+                <div className="text-base font-bold text-green-400">Successful ✓</div>
               </div>
 
               <Button
@@ -957,8 +957,8 @@ export default function WithdrawPage() {
               </div>
 
               <DialogHeader className="text-center space-y-2">
-                <DialogTitle className="text-lg font-bold text-white">Abhebung eingeschränkt</DialogTitle>
-                <DialogDescription className="sr-only">Abhebung ist derzeit nicht verfügbar</DialogDescription>
+                <DialogTitle className="text-lg font-bold text-white">Withdrawal restricted</DialogTitle>
+                <DialogDescription className="sr-only">Withdrawal is currently unavailable</DialogDescription>
               </DialogHeader>
 
               <div className="space-y-4">
@@ -1016,8 +1016,8 @@ export default function WithdrawPage() {
             <div className="relative p-4 space-y-3">
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <h2 className="text-base font-bold text-white">Abhebungsquittung</h2>
-                  <p className="text-gray-400 text-xs">Erfolgreich verarbeitet</p>
+                  <h2 className="text-base font-bold text-white">Withdrawal receipt</h2>
+                  <p className="text-gray-400 text-xs">Processed successfully</p>
                 </div>
                 <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg">
                   <Check className="h-5 w-5 text-white" />
@@ -1064,7 +1064,7 @@ export default function WithdrawPage() {
                             <span className="text-white text-xs">{withdrawalReceipt.bankName}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-400">Kontoinhaber:</span>
+                            <span className="text-gray-400">Account holder:</span>
                             <span className="text-white text-xs">{withdrawalReceipt.accountName}</span>
                           </div>
                         </>
@@ -1116,7 +1116,7 @@ export default function WithdrawPage() {
                       printWindow.document.write(`
                         <html>
                           <head>
-                            <title>Abhebungsquittung - ${withdrawalReceipt?.transactionId}</title>
+                            <title>Withdrawal receipt - ${withdrawalReceipt?.transactionId}</title>
                             <style>
                               body { font-family: Arial, sans-serif; padding: 20px; color: #333; }
                               .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #000; padding-bottom: 20px; }
@@ -1133,7 +1133,7 @@ export default function WithdrawPage() {
                           </head>
                           <body>
                             <div class="header">
-                              <div class="title">Abhebungsquittung</div>
+                              <div class="title">Withdrawal receipt</div>
                               <div>Transaktion erfolgreich verarbeitet</div>
                             </div>
                             <div class="section">
@@ -1147,8 +1147,8 @@ export default function WithdrawPage() {
                                 <div class="value">${withdrawalReceipt?.date}</div>
                               </div>
                               <div class="detail-row">
-                                <div class="label">Abhebungsbetrag:</div>
-                                <div class="value amount">€${withdrawalReceipt?.amount.toLocaleString("de-DE", {
+                                <div class="label">Withdrawal amount:</div>
+                                <div class="value amount">€${withdrawalReceipt?.amount.toLocaleString("en-US", {
                                   minimumFractionDigits: 2,
                                   maximumFractionDigits: 2,
                                 })}</div>
@@ -1159,7 +1159,7 @@ export default function WithdrawPage() {
                               </div>
                             </div>
                             <div class="section">
-                              <div class="section-title">Abhebungsmethode Details</div>
+                              <div class="section-title">Withdrawal method details</div>
                               <div class="detail-row">
                                 <div class="label">Methode:</div>
                                 <div class="value">${withdrawalReceipt?.method.toUpperCase()}</div>
@@ -1172,7 +1172,7 @@ export default function WithdrawPage() {
                                   <div class="value">${withdrawalReceipt?.bankName}</div>
                                 </div>
                                 <div class="detail-row">
-                                  <div class="label">Kontoinhaber:</div>
+                                  <div class="label">Account holder:</div>
                                   <div class="value">${withdrawalReceipt?.accountName}</div>
                                 </div>
                               `

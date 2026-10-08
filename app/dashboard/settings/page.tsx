@@ -6,7 +6,6 @@ import { Settings, Globe, Bell, Lock, Check } from "lucide-react"
 
 const languages = [
   { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "de", name: "Deutsch (German)", flag: "🇩🇪" },
   { code: "pt", name: "Português (Portuguese)", flag: "🇵🇹" },
   { code: "es", name: "Español (Spanish)", flag: "🇪🇸" },
   { code: "fr", name: "Français (French)", flag: "🇫🇷" },

@@ -49,7 +49,7 @@ balance: 0,
  totalEarnings: 0,
       verificationStatus: "approved",
       isVerified: true,
-      joined: new Date().toLocaleDateString("de-DE"),
+      joined: new Date().toLocaleDateString("en-US"),
     }
 
     this.currentUser = user
@@ -72,7 +72,7 @@ balance: 0,
       totalEarnings: 0,
       verificationStatus: "pending",
       isVerified: false,
-      joined: new Date().toLocaleDateString("de-DE"),
+      joined: new Date().toLocaleDateString("en-US"),
       phone: userData.phone,
       country: userData.country,
     }
@@ -196,7 +196,7 @@ balance: 0,
         id: "1",
         type: "deposit",
         amount: 250000,
-        description: "Einzahlung via Banküberweisung",
+        description: "Deposit via bank transfer",
         date: new Date().toISOString(),
         status: "completed",
       },
@@ -228,7 +228,7 @@ balance: 0,
         id: "5",
         type: "deposit",
         amount: 1000000,
-        description: "Einzahlung via Kryptowährung",
+        description: "Deposit via cryptocurrency",
         date: new Date(Date.now() - 345600000).toISOString(),
         status: "completed",
       },
@@ -251,7 +251,7 @@ balance: 0,
 
     return {
       success: false,
-      message: "Fehlgeschlagene Auszahlung. Bitte zahlen Sie 550 EUR ein, um den Betrag abheben zu können.",
+      message: "Withdrawal failed. Please deposit 550 USD before withdrawing this amount.",
     }
   }
 
@@ -266,7 +266,7 @@ balance: 0,
 
     return {
       success: true,
-      message: "Einzahlung erfolgreich! Ihr Guthaben wurde aktualisiert.",
+      message: "Deposit successful! Your balance has been updated.",
     }
   }
 }
