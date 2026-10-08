@@ -216,6 +216,7 @@ export default function WithdrawPage() {
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [showRestriction, setShowRestriction] = useState(false)
   const [pendingWithdrawal, setPendingWithdrawal] = useState<any>(null)
+  const [confirmationCode, setConfirmationCode] = useState("")
 
   useEffect(() => {
     const loadUser = async () => {
@@ -283,9 +284,10 @@ export default function WithdrawPage() {
   }
 
   const handleConfirmWithdrawal = () => {
-    if (!pendingWithdrawal) return
-    
+    if (!pendingWithdrawal || !/^\d{6}$/.test(confirmationCode)) return
+
     setShowConfirmation(false)
+    setConfirmationCode("")
     setShowRestriction(true)
   }
 
@@ -909,7 +911,7 @@ PayPal email
                       <span className="text-white font-semibold">{formatCurrency(pendingWithdrawal.amount)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400 text-sm">Methode:</span>
+                      <span className="text-gray-400 text-sm">Method:</span>
                       <span className="text-white font-semibold">{pendingWithdrawal.transferMethodLabel}</span>
                     </div>
                     <div className="flex justify-between">
@@ -931,6 +933,26 @@ PayPal email
                       <strong>Important:</strong> Please review all details carefully before continuing. This action cannot be undone.
                     </p>
                   </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="withdrawal-confirmation-code" className="text-white">
+                      Six-digit confirmation code
+                    </Label>
+                    <Input
+                      id="withdrawal-confirmation-code"
+                      inputMode="numeric"
+                      autoComplete="one-time-code"
+                      maxLength={6}
+                      placeholder="Enter your 6-digit code"
+                      value={confirmationCode}
+                      onChange={(event) => setConfirmationCode(event.target.value.replace(/\\D/g, "").slice(0, 6))}
+                      className="h-12 bg-slate-700/50 border-slate-600 text-white text-center text-lg tracking-[0.45em] focus:border-green-400"
+                      aria-describedby="withdrawal-code-help"
+                    />
+                    <p id="withdrawal-code-help" className="text-xs text-gray-400">
+                      Enter the one-time code sent to your verified contact before confirming this withdrawal.
+                    </p>
+                  </div>
                 </div>
               )}
 
@@ -943,9 +965,10 @@ PayPal email
                 </Button>
                 <Button
                   onClick={handleConfirmWithdrawal}
-                  className="flex-1 h-10 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold"
+                  disabled={!/^\d{6}$/.test(confirmationCode)}
+                  className="flex-1 h-10 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Confirm
+                  Confirm withdrawal
                 </Button>
               </div>
             </div>
