@@ -282,11 +282,11 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(150000000) : "€ ••••••"}
+                  {showBalance ? formatCurrency(0) : "€ ••••••"}
                 </div>
                 <p className="text-xs text-gray-500 flex items-center mt-2">
                   <span className="inline-block w-2 h-2 bg-[#f9a826] rounded-full mr-2 animate-pulse"></span>
-                  150 Million EUR Portfolio
+                  No funds deposited
                 </p>
               </CardContent>
             </Card>
@@ -302,7 +302,7 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(150000000) : "€ ••••••"}
+                  {showBalance ? formatCurrency(0) : "€ ••••••"}
                 </div>
                 <p className="text-xs text-gray-400 flex items-center mt-2">
                   <ArrowUpRight className="h-3 w-3 mr-1" />
@@ -322,7 +322,7 @@ export default function DashboardPage() {
                     balanceFading ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  {showBalance ? formatCurrency(150000000) : "€ ••••••"}
+                  {showBalance ? formatCurrency(0) : "€ ••••••"}
                 </div>
                 <p className="text-xs text-green-400 flex items-center mt-2">
                   <TrendingUp className="h-3 w-3 mr-1" />

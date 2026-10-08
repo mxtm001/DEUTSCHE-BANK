@@ -226,7 +226,7 @@ export default function WithdrawPage() {
         router.push("/login")
         return
       }
-      currentUser.balance = 150000000
+      currentUser.balance = 0
       setUser(currentUser)
       setLoading(false)
     }
@@ -234,7 +234,7 @@ export default function WithdrawPage() {
     loadUser()
   }, [router])
 
-  const balance = 150000000
+  const balance = 0
 
   const handleWithdraw = async (e: React.FormEvent) => {
     e.preventDefault()

@@ -46,9 +46,9 @@ class UserService {
       email: email,
       name: email.split("@")[0],
       firstName: email.split("@")[0],
-      balance: 150000000, // changed balance to 150 million EUR
-      totalInvested: 150000000,
-      totalEarnings: 150000000,
+balance: 0,
+ totalInvested: 0,
+ totalEarnings: 0,
       verificationStatus: "approved",
       isVerified: true,
       joined: new Date().toLocaleDateString("de-DE"),

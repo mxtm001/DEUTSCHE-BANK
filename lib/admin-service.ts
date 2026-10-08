@@ -274,15 +274,14 @@ class AdminService {
 
   async updateUserBalance(userId: string, newBalance: number, adminEmail: string): Promise<void> {
     try {
-      // Always set balance to €12,000 regardless of input
-      await databaseService.updateUser(userId, { balance: 12000 })
+await databaseService.updateUser(userId, { balance: newBalance })
 
       // Track admin activity
       await this.trackUserActivity(
         userId,
         adminEmail,
         "BALANCE_UPDATED",
-        `Admin attempted to set balance to €${newBalance.toLocaleString()}, but system enforced €12,000`,
+        `Admin set balance to €${newBalance.toLocaleString()}`,
       )
     } catch (error) {
       console.error("Error updating user balance:", error)
