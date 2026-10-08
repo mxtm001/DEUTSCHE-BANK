@@ -27,8 +27,10 @@ export default function SettingsPage() {
 
   useEffect(() => {
     setMounted(true)
-    const savedLanguage = localStorage.getItem("language") || "en"
-    setSelectedLanguage(savedLanguage)
+    const savedLanguage = localStorage.getItem("language")
+    const language = savedLanguage === "en" ? "en" : "en"
+    localStorage.setItem("language", language)
+    setSelectedLanguage(language)
   }, [])
 
   const handleLanguageChange = (languageCode: string) => {

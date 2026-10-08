@@ -160,7 +160,7 @@ const brazilianBanks = [
 ]
 
 const germanBanks = [
-  { value: "deutsche-bank", label: "Deutsche Bank AG" },
+  { value: "deutsche-bank", label: "Global Trust Bank" },
   { value: "commerzbank", label: "Commerzbank AG" },
   { value: "dresdner", label: "Dresdner Bank" },
   { value: "hypo-vereinsbank", label: "HypoVereinsbank" },
@@ -177,14 +177,14 @@ const germanBanks = [
   { value: "ing", label: "ING" },
   { value: "consorsbank", label: "Consorsbank" },
   { value: "flatex", label: "Flatex" },
-  { value: "dkb", label: "Deutsche Kreditbank (DKB)" },
+  { value: "dkb", label: "Digital Credit Bank" },
   { value: "santander", label: "Santander Consumer Bank" },
   { value: "hsbc", label: "HSBC Germany" },
   { value: "ubs", label: "UBS Deutschland" },
   { value: "credit-suisse", label: "Credit Suisse Deutschland" },
   { value: "jp-morgan", label: "JPMorgan Chase Bank" },
   { value: "goldman-sachs", label: "Goldman Sachs Bank" },
-  { value: "deutsche-boerse", label: "Deutsche Börse" },
+  { value: "deutsche-boerse", label: "Global Exchange Bank" },
   { value: "postbank", label: "Postbank" },
   { value: "targobank", label: "Targobank" },
   { value: "fidor", label: "Fidor Bank" },
@@ -578,11 +578,11 @@ export default function WithdrawPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <Label htmlFor="accountName" className="text-white">
-                        Name des Kontoinhabers
+                        Account holder name
                       </Label>
                       <Input
                         id="accountName"
-                        placeholder="Vollständiger Name wie bei der Bank"
+                        placeholder="Full name as shown on your bank account"
                         value={bankDetails.accountName}
                         onChange={(e) => setBankDetails({ ...bankDetails, accountName: e.target.value })}
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
@@ -591,11 +591,11 @@ export default function WithdrawPage() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="accountNumber" className="text-white">
-                        Kontonummer / IBAN
+                        Account number / IBAN
                       </Label>
                       <Input
                         id="accountNumber"
-                        placeholder="Ihre IBAN (z.B. DE89 3704 0044 0532 0130 00)"
+                        placeholder="Your IBAN or account number"
                         value={bankDetails.accountNumber}
                         onChange={(e) => setBankDetails({ ...bankDetails, accountNumber: e.target.value })}
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
@@ -667,7 +667,7 @@ export default function WithdrawPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="pixHolder" className="text-white">
-                      Name des Kontoinhabers
+                      Account holder name
                     </Label>
                     <Input
                       id="pixHolder"
@@ -964,7 +964,7 @@ export default function WithdrawPage() {
               <div className="space-y-4">
                 <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
                   <p className="text-red-300 text-sm leading-relaxed">
-                    Abhebungen an die folgende Adresse sind eingeschränkt. Bitte kontaktieren Sie die Bank für weitere Informationen.
+                    Withdrawals to this destination are restricted. Please contact your bank for more information.
                   </p>
                 </div>
 
@@ -988,7 +988,7 @@ export default function WithdrawPage() {
 
                 <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
                   <p className="text-blue-300 text-xs">
-                    Für Unterstützung wenden Sie sich bitte an unseren Kundenservice unter support@deutschebank.de oder rufen Sie unsere Hotline an.
+                    For assistance, contact our support team through the Support page.
                   </p>
                 </div>
               </div>
@@ -1099,10 +1099,10 @@ export default function WithdrawPage() {
                   <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-2">
                     <p className="text-blue-300 text-xs">
                       <strong>Hinweis:</strong> {withdrawalReceipt.transferMethodLabel === "Instant SEPA" 
-                        ? "Ihre Instant SEPA-Überweisung wird innerhalb von 10 Sekunden verarbeitet."
+                        ? "Your instant transfer will be processed within 10 seconds."
                         : withdrawalReceipt.transferMethodLabel === "SEPA"
-                        ? "Ihre SEPA-Überweisung wird innerhalb von 1 Werktag verarbeitet."
-                        : "Die Abhebung wird in 1-3 Werktagen auf Ihrem Konto eingehen."} Sie erhalten eine Benachrichtigung, wenn abgeschlossen.
+                        ? "Your transfer will be processed within 1 business day."
+                        : "Your withdrawal will arrive in 1–3 business days."} Sie erhalten eine Benachrichtigung, wenn abgeschlossen.
                     </p>
                   </div>
                 </div>
@@ -1214,7 +1214,7 @@ export default function WithdrawPage() {
                               }
                             </div>
                             <div class="footer">
-                              <p>Die Abhebung wird in 1-3 Werktagen auf Ihrem Konto eingehen.</p>
+                              <p>Your withdrawal will arrive in 1–3 business days.</p>
                               <p>Vielen Dank für Ihr Vertrauen in unsere Plattform.</p>
                             </div>
                           </body>

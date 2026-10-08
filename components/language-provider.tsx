@@ -17,18 +17,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [translations, setTranslations] = useState(getTranslations("en"))
 
   useEffect(() => {
-    // Load saved language or detect from browser
-    const savedLanguage = localStorage.getItem("preferredLanguage") as Language
-    if (savedLanguage && savedLanguage in getTranslations) {
-      setLanguage(savedLanguage)
-      setTranslations(getTranslations(savedLanguage))
-    } else {
-      // Auto-detect from browser language
-      const browserLang = navigator.language.split("-")[0]
-      const detectedLang = ["en", "es", "fr", "de", "pt", "ar", "zh"].includes(browserLang) ? browserLang : "en"
-      setLanguage(detectedLang)
-      setTranslations(getTranslations(detectedLang))
-    }
+    // Keep the customer-facing interface in English by default.
+    setLanguage("en")
+    setTranslations(getTranslations("en"))
+    localStorage.setItem("preferredLanguage", "en")
   }, [])
 
   const handleSetLanguage = (lang: Language) => {
