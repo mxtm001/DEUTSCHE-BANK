@@ -299,7 +299,7 @@ export default function WithdrawPage() {
       setShowModal(true)
       setPendingWithdrawal(null)
       setAmount("")
-    }, 3000)
+    }, 5000)
   }
 
   const handleCloseRestriction = () => {
@@ -346,6 +346,20 @@ export default function WithdrawPage() {
           </div>
           <p className="text-muted-foreground text-lg">Withdraw your funds securely to your preferred account</p>
         </div>
+
+        {showProcessing && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="mb-6 flex items-center gap-4 rounded-xl border border-blue-400/40 bg-blue-500/10 px-5 py-4 text-blue-100 shadow-lg shadow-blue-950/20"
+          >
+            <div className="h-8 w-8 shrink-0 animate-spin rounded-full border-4 border-blue-300/25 border-t-blue-300" />
+            <div>
+              <p className="font-semibold">Processing withdrawal</p>
+              <p className="text-sm text-blue-200/80">Verifying destination and preparing your receipt. Please wait...</p>
+            </div>
+          </div>
+        )}
 
         <div className="grid gap-6 md:grid-cols-3 mb-8">
           <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256]/50 overflow-hidden relative group hover:border-[#f9a826]/50 transition-all duration-300">
