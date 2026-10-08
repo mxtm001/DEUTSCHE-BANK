@@ -116,7 +116,7 @@
   }
   body {
     @apply text-foreground;
-    background: #070e27;
+    background: #050806;
   }
 }
 
@@ -221,7 +221,7 @@
 }
 
 body {
-  background: #070e27;
+  background: #050806;
 }
 
 .float-element {
