@@ -214,6 +214,7 @@ export default function WithdrawPage() {
   const [showModal, setShowModal] = useState(false)
   const [withdrawalReceipt, setWithdrawalReceipt] = useState<any>(null)
   const [showConfirmation, setShowConfirmation] = useState(false)
+  const [showProcessing, setShowProcessing] = useState(false)
   const [showRestriction, setShowRestriction] = useState(false)
   const [pendingWithdrawal, setPendingWithdrawal] = useState<any>(null)
   const [confirmationCode, setConfirmationCode] = useState("")
@@ -287,12 +288,18 @@ export default function WithdrawPage() {
   const handleConfirmWithdrawal = () => {
     if (!pendingWithdrawal || !/^\d{6}$/.test(confirmationCode)) return
 
+    const confirmedWithdrawal = pendingWithdrawal
     setShowConfirmation(false)
     setConfirmationCode("")
-    setWithdrawalReceipt({ ...pendingWithdrawal, status: "Sandbox test completed" })
-    setShowModal(true)
-    setPendingWithdrawal(null)
-    setAmount("")
+    setShowProcessing(true)
+
+    window.setTimeout(() => {
+      setShowProcessing(false)
+      setWithdrawalReceipt({ ...confirmedWithdrawal, status: "Sandbox test completed" })
+      setShowModal(true)
+      setPendingWithdrawal(null)
+      setAmount("")
+    }, 1400)
   }
 
   const handleCloseRestriction = () => {
@@ -975,6 +982,31 @@ PayPal email
                   Confirm withdrawal
                 </Button>
               </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={showProcessing} onOpenChange={() => undefined}>
+          <DialogContent
+            className="max-w-sm border border-blue-400/30 bg-gradient-to-br from-slate-950 to-slate-900 text-white [&>button]:hidden"
+            onInteractOutside={(event) => event.preventDefault()}
+            onEscapeKeyDown={(event) => event.preventDefault()}
+          >
+            <div className="flex flex-col items-center gap-5 py-6 text-center">
+              <div className="relative flex h-16 w-16 items-center justify-center">
+                <div className="absolute inset-0 animate-ping rounded-full bg-blue-400/20" />
+                <div className="relative h-12 w-12 animate-spin rounded-full border-4 border-blue-400/20 border-t-blue-400" />
+              </div>
+              <div className="space-y-2">
+                <DialogTitle className="text-xl text-white">Processing withdrawal</DialogTitle>
+                <DialogDescription className="text-gray-300">
+                  Your request is being securely submitted. Please keep this window open.
+                </DialogDescription>
+              </div>
+              <div className="w-full rounded-full bg-slate-700" aria-label="Withdrawal processing">
+                <div className="h-2 w-2/3 animate-pulse rounded-full bg-gradient-to-r from-blue-400 to-cyan-400" />
+              </div>
+              <p className="text-xs text-gray-400">Verifying destination and creating your receipt...</p>
             </div>
           </DialogContent>
         </Dialog>
