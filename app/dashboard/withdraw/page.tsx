@@ -40,6 +40,7 @@ interface CryptoCurrency {
 
 const fiatCurrencies = [
   { value: "USD", label: "US Dollar (USD)", symbol: "$" },
+  { value: "BRL", label: "Brazilian Real (BRL)", symbol: "R$" },
   { value: "EUR", label: "Euro (EUR)", symbol: "€" },
   { value: "GBP", label: "British Pound (GBP)", symbol: "£" },
   { value: "CAD", label: "Canadian Dollar (CAD)", symbol: "C$" },
@@ -75,6 +76,7 @@ interface BankDetails {
 
 interface PixDetails {
   pixKey: string
+  keyType: "cpf" | "digital" | "email" | "cellular"
   accountHolder: string
   bank: string
 }
@@ -196,6 +198,7 @@ export default function WithdrawPage() {
   })
   const [pixDetails, setPixDetails] = useState<PixDetails>({
     pixKey: "",
+    keyType: "cpf",
     accountHolder: "",
     bank: "",
   })
@@ -427,7 +430,14 @@ export default function WithdrawPage() {
                 </div>
               </div>
 
-              <Tabs value={withdrawalMethod} onValueChange={setWithdrawalMethod} className="w-full">
+              <Tabs
+                value={withdrawalMethod}
+                onValueChange={(value) => {
+                  setWithdrawalMethod(value)
+                  if (value === "pix") setFiatCurrency("BRL")
+                }}
+                className="w-full"
+              >
                 <TabsList className="grid w-full grid-cols-4 bg-[#162040]/50 p-1 gap-1">
                   <TabsTrigger
                     value="bank"
@@ -668,8 +678,33 @@ export default function WithdrawPage() {
                   </div>
 
                   <div className="space-y-2">
+                    <Label htmlFor="pixKeyType" className="text-white">
+                      PIX key type
+                    </Label>
+                    <Select
+                      value={pixDetails.keyType}
+                      onValueChange={(value: PixDetails["keyType"]) =>
+                        setPixDetails({ ...pixDetails, keyType: value })
+                      }
+                    >
+                      <SelectTrigger
+                        id="pixKeyType"
+                        className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
+                      >
+                        <SelectValue placeholder="Select key type" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#162040] border-[#253256] text-white">
+                        <SelectItem value="cpf">CPF</SelectItem>
+                        <SelectItem value="digital">Digital Key</SelectItem>
+                        <SelectItem value="email">Email</SelectItem>
+                        <SelectItem value="cellular">Cellular Key</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
                     <Label htmlFor="pixKey" className="text-white">
-PIX key
+                      PIX key
                     </Label>
                     <Input
                       id="pixKey"
@@ -694,7 +729,7 @@ PIX key
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="pixHolder" className="text-white">
-                    Verified account holder name
+                    Account name
                   </Label>
                   <Input
                     id="pixHolder"
