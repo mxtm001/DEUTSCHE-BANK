@@ -115,7 +115,8 @@
     @apply outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: #070e27;
   }
 }
 
@@ -220,9 +221,7 @@
 }
 
 body {
-  background: linear-gradient(-45deg, #22c55e, #16a34a, #15803d, #166534);
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
+  background: #070e27;
 }
 
 .float-element {
