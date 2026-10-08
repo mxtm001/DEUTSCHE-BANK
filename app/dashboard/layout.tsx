@@ -93,7 +93,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className={`flex flex-col h-full ${className}`}>
       <div className="flex items-center px-6 py-4 border-b">
         <div className="relative w-8 h-8 rounded-full overflow-hidden">
-          <Image src="/mxtm-logo.png" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
+          <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
         </div>
         <span className="ml-2 font-semibold text-gray-900">MXTM CRYPTO PLATFORM</span>
       </div>
@@ -167,7 +167,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </Sheet>
             <div className="ml-2 flex items-center">
               <div className="relative w-6 h-6 rounded-full overflow-hidden">
-                <Image src="/mxtm-logo.png" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
+                <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
               </div>
               <span className="ml-2 font-semibold text-gray-900">MXTM CRYPTO PLATFORM</span>
             </div>

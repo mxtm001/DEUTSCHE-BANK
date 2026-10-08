@@ -180,7 +180,7 @@ export default function RegisterPage() {
             <div className="space-y-4">
               <Link href="/" className="flex items-center space-x-3 mb-8">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-[#f9a826]/50">
-                  <Image src="/mxtm-logo.png" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
+                  <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
                 </div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                   MXTM CRYPTO PLATFORM
@@ -237,7 +237,7 @@ export default function RegisterPage() {
             <div className="lg:hidden flex items-center justify-center mb-8">
               <Link href="/" className="flex items-center space-x-3">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                  <Image src="/mxtm-logo.png" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
+                  <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM CRYPTO PLATFORM" fill className="object-cover" />
                 </div>
                 <span className="text-xl font-bold text-white">MXTM CRYPTO PLATFORM</span>
               </Link>

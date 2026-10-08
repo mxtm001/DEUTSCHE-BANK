@@ -119,7 +119,7 @@ export default function LoginPage() {
             </Link>
             <Link href="/" className="flex items-center">
               <div className="relative w-8 h-8 rounded-full overflow-hidden">
-                <Image src="/mxtm-logo.png" alt="MXTM Crypto Platform" fill className="object-cover" />
+                <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM Crypto Platform" fill className="object-cover" />
               </div>
               <span className="ml-2 font-medium text-white">MXTM CRYPTO PLATFORM</span>
             </Link>

@@ -106,7 +106,7 @@ export default function ResetPassword() {
       <header className="container mx-auto py-4 px-4">
         <Link href="/" className="flex items-center">
           <div className="relative w-12 h-12 rounded-full overflow-hidden">
-            <Image src="/mxtm-logo.png" alt="MXTM Investment" fill className="object-cover" />
+            <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM Investment" fill className="object-cover" />
           </div>
           <span className="ml-2 text-white font-medium">MXTM INVESTMENT PLATFORM</span>
         </Link>

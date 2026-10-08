@@ -111,7 +111,7 @@ export default function DashboardPage() {
         <div className="p-4 border-b border-[#253256]/50">
           <Link href="/" className="flex items-center group">
             <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-[#f9a826]/20 group-hover:ring-[#f9a826]/40 transition-all">
-              <Image src="/mxtm-logo.png" alt="MXTM Investment" fill className="object-cover" />
+              <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM Investment" fill className="object-cover" />
             </div>
             <span className="ml-2 font-bold bg-gradient-to-r from-[#f9a826] to-yellow-400 bg-clip-text text-transparent">
               MXTM INVESTMENT
@@ -225,7 +225,7 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between p-4">
           <Link href="/" className="flex items-center">
             <div className="relative w-8 h-8 rounded-full overflow-hidden">
-              <Image src="/mxtm-logo.png" alt="MXTM Investment" fill className="object-cover" />
+              <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM Investment" fill className="object-cover" />
             </div>
             <span className="ml-2 font-bold text-[#f9a826] text-sm">MXTM</span>
           </Link>

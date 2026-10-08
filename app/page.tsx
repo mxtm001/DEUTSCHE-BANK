@@ -20,7 +20,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#050e24] text-white">
       <header className="container mx-auto py-4 px-4 flex justify-between items-center sticky top-0 bg-gradient-to-r from-[#0a1735]/95 to-[#162040]/95 backdrop-blur-lg z-50 border-b border-[#f9a826]/20 transition-all duration-300">
         <Link href="/" className="flex items-center hover:scale-110 transition-transform duration-300">
-          <img src="/mxtm-logo.png" alt="MXTM Crypto Platform" className="h-12 w-12 rounded-xl object-cover" />
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.png-L4reJMFMC6l5QQ9sJuWX4Ozf3GnYU4.jpeg" alt="MXTM Crypto Platform" className="h-12 w-12 rounded-xl object-cover" />
           <span className="ml-2 text-white font-medium">
             MXTM CRYPTO PLATFORM
           </span>
