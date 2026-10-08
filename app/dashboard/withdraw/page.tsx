@@ -38,6 +38,15 @@ interface CryptoCurrency {
   icon: string
 }
 
+const fiatCurrencies = [
+  { value: "USD", label: "US Dollar (USD)", symbol: "$" },
+  { value: "EUR", label: "Euro (EUR)", symbol: "€" },
+  { value: "GBP", label: "British Pound (GBP)", symbol: "£" },
+  { value: "CAD", label: "Canadian Dollar (CAD)", symbol: "C$" },
+  { value: "AUD", label: "Australian Dollar (AUD)", symbol: "A$" },
+  { value: "CHF", label: "Swiss Franc (CHF)", symbol: "CHF" },
+]
+
 const cryptocurrencies: CryptoCurrency[] = [
   { value: "BTC", label: "Bitcoin", symbol: "BTC", network: "Bitcoin Network", icon: "₿" },
   { value: "ETH", label: "Ethereum", symbol: "ETH", network: "Ethereum Network", icon: "Ξ" },
@@ -193,6 +202,7 @@ export default function WithdrawPage() {
   const [amount, setAmount] = useState("")
   const [processing, setProcessing] = useState(false)
   const [withdrawalMethod, setWithdrawalMethod] = useState("bank")
+  const [fiatCurrency, setFiatCurrency] = useState("USD")
   const [bankDetails, setBankDetails] = useState<BankDetails>({
     accountName: "",
     accountNumber: "",
@@ -249,12 +259,12 @@ export default function WithdrawPage() {
       } else if (bankDetails.transferMethod === "sepa") {
         transferMethodLabel = "SEPA"
       } else {
-        transferMethodLabel = "Standardüberweisung"
+        transferMethodLabel = "Standard bank transfer"
       }
     } else if (withdrawalMethod === "pix") {
       transferMethodLabel = "PIX"
     } else if (withdrawalMethod === "crypto") {
-      transferMethodLabel = "Kryptowährung"
+      transferMethodLabel = "Cryptowährung"
     } else if (withdrawalMethod === "paypal") {
       transferMethodLabel = "PayPal"
     }
@@ -289,9 +299,9 @@ export default function WithdrawPage() {
   }
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("de-DE", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: fiatCurrency,
     }).format(value)
   }
 
@@ -324,14 +334,14 @@ export default function WithdrawPage() {
               Mittel abheben
             </h1>
           </div>
-          <p className="text-muted-foreground text-lg">Heben Sie Ihre Gewinne sicher auf Ihrem bevorzugten Konto ab</p>
+          <p className="text-muted-foreground text-lg">Withdraw your funds securely to your preferred account</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3 mb-8">
           <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256]/50 overflow-hidden relative group hover:border-[#f9a826]/50 transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-[#f9a826]/5 to-yellow-400/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Verfügbarer Saldo</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">Available balance</CardTitle>
               <div className="p-2 bg-[#f9a826]/10 rounded-lg">
                 <Wallet className="h-4 w-4 text-[#f9a826]" />
               </div>
@@ -342,7 +352,7 @@ export default function WithdrawPage() {
               </div>
               <p className="text-xs text-gray-400 mt-2 flex items-center">
                 <AlertCircle className="h-3 w-3 mr-1 text-green-400" />
-                Zur Abhebung bereit
+                Ready to withdraw
               </p>
             </CardContent>
           </Card>
@@ -367,7 +377,7 @@ export default function WithdrawPage() {
           <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256]/50 overflow-hidden relative group hover:border-green-400/50 transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Abhebungslimit</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">Withdrawal limit</CardTitle>
               <div className="p-2 bg-green-500/10 rounded-lg">
                 <TrendingUp className="h-4 w-4 text-green-400" />
               </div>
@@ -376,7 +386,7 @@ export default function WithdrawPage() {
               <div className="text-xl font-bold text-white">Unbegrenzt</div>
               <p className="text-xs text-gray-400 mt-2 flex items-center">
                 <Globe className="h-3 w-3 mr-1 text-green-400" />
-                Keine Einschränkungen
+                No restrictions
               </p>
             </CardContent>
           </Card>
@@ -386,9 +396,9 @@ export default function WithdrawPage() {
           <CardHeader className="border-b border-[#253256]/50 pb-6">
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-2xl font-bold text-white">Abhebung anfordern</CardTitle>
+                <CardTitle className="text-2xl font-bold text-white">Request withdrawal</CardTitle>
                 <CardDescription className="text-gray-400 mt-2">
-                  Wählen Sie Ihre bevorzugte Abhebungsmethode und geben Sie Ihre Daten ein
+                  Choose your preferred withdrawal method and enter your details
                 </CardDescription>
               </div>
               <div className="p-3 bg-gradient-to-r from-[#f9a826]/10 to-yellow-400/10 rounded-lg">
@@ -401,7 +411,7 @@ export default function WithdrawPage() {
               <div className="space-y-3">
                 <Label htmlFor="amount" className="text-white text-base font-semibold flex items-center">
                   <DollarSign className="h-4 w-4 mr-2 text-[#f9a826]" />
-                  Abhebungsbetrag (EUR)
+                  Withdrawal amount (USD)
                 </Label>
                 <div className="relative">
                   <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">€</div>
@@ -418,7 +428,7 @@ export default function WithdrawPage() {
                   />
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <p className="text-gray-400">Verfügbarer Saldo:</p>
+                  <p className="text-gray-400">Available balance:</p>
                   <p className="text-[#f9a826] font-semibold">{formatCurrency(balance)}</p>
                 </div>
               </div>
@@ -444,7 +454,7 @@ export default function WithdrawPage() {
                     className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#f9a826] data-[state=active]:to-yellow-400 data-[state=active]:text-black flex items-center gap-2 py-3"
                   >
                     <Wallet className="h-4 w-4" />
-                    <span className="hidden sm:inline">Krypto</span>
+                    <span className="hidden sm:inline">Crypto</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="paypal"
@@ -457,8 +467,29 @@ export default function WithdrawPage() {
 
                 <TabsContent value="bank" className="space-y-5 mt-6">
                   <div className="space-y-2">
+                    <Label htmlFor="fiatCurrency" className="text-white">
+                      Fiat currency
+                    </Label>
+                    <Select value={fiatCurrency} onValueChange={setFiatCurrency}>
+                      <SelectTrigger
+                        id="fiatCurrency"
+                        className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
+                      >
+                        <SelectValue placeholder="Select a currency" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#162040] border-[#253256] text-white">
+                        {fiatCurrencies.map((currency) => (
+                          <SelectItem key={currency.value} value={currency.value}>
+                            {currency.symbol} {currency.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
                     <Label htmlFor="transferMethod" className="text-white">
-                      Übertragungsmethode
+                      Transfer method
                     </Label>
                     <Select
                       value={bankDetails.transferMethod}
@@ -470,14 +501,14 @@ export default function WithdrawPage() {
                         id="transferMethod"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Wählen Sie die Übertragungsmethode" />
+                        <SelectValue placeholder="Wählen Sie die Transfer method" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white">
                         <SelectItem
                           value="standard"
                           className="focus:bg-[#253256] focus:text-white"
                         >
-                          Standardüberweisung (1-3 Werktage)
+                          Standard bank transfer (1–3 business days)
                         </SelectItem>
                         <SelectItem
                           value="sepa"
@@ -499,7 +530,7 @@ export default function WithdrawPage() {
                     <Alert className="bg-green-500/10 border-green-500/30 text-green-300">
                       <Zap className="h-4 w-4" />
                       <AlertDescription>
-                        Instant SEPA überweisungen werden innerhalb von 10 Sekunden verarbeitet
+                        Instant SEPA transfers are processed within 10 seconds
                       </AlertDescription>
                     </Alert>
                   )}
@@ -508,14 +539,14 @@ export default function WithdrawPage() {
                     <Alert className="bg-blue-500/10 border-blue-500/30 text-blue-300">
                       <Clock className="h-4 w-4" />
                       <AlertDescription>
-                        SEPA-Überweisungen werden innerhalb von 1 Werktag verarbeitet
+                        SEPA transfers are processed within 1 business day
                       </AlertDescription>
                     </Alert>
                   )}
 
                   <div className="space-y-2">
                     <Label htmlFor="germanBank" className="text-white">
-                      Wählen Sie Ihre Bank
+                      Select your bank
                     </Label>
                     <Select
                       value={bankDetails.bankName}
@@ -528,7 +559,7 @@ export default function WithdrawPage() {
                         id="germanBank"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Wählen Sie Ihre Bank" />
+                        <SelectValue placeholder="Select your bank" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white max-h-96">
                         {germanBanks.map((bank) => (
@@ -595,7 +626,7 @@ export default function WithdrawPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="pixBank" className="text-white">
-                      Wählen Sie Ihre Bank
+                      Select your bank
                     </Label>
                     <Select
                       value={pixDetails.bank}
@@ -605,7 +636,7 @@ export default function WithdrawPage() {
                         id="pixBank"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Wählen Sie Ihre Bank" />
+                        <SelectValue placeholder="Select your bank" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white">
                         {brazilianBanks.map((bank) => (
@@ -653,21 +684,21 @@ export default function WithdrawPage() {
                   <Alert className="bg-blue-500/10 border-blue-500/30 text-blue-300">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>
-                      Kryptoabhebungen werden in 1-2 Stunden verarbeitet. Überprüfen Sie die Wallet-Adresse und das
+                      Cryptoabhebungen werden in 1-2 Stunden verarbeitet. Überprüfen Sie die Wallet-Adresse und das
                       Netzwerk.
                     </AlertDescription>
                   </Alert>
 
                   <div className="space-y-2">
                     <Label htmlFor="cryptocurrency" className="text-white">
-                      Wählen Sie die Kryptowährung
+                      Wählen Sie die Cryptowährung
                     </Label>
                     <Select value={cryptoDetails.cryptocurrency} onValueChange={handleCryptoChange}>
                       <SelectTrigger
                         id="cryptocurrency"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Wählen Sie Kryptowährung" />
+                        <SelectValue placeholder="Wählen Sie Cryptowährung" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white">
                         {cryptocurrencies.map((crypto) => (
@@ -689,7 +720,7 @@ export default function WithdrawPage() {
                     </Select>
                     <p className="text-xs text-gray-400 flex items-center gap-1">
                       <Globe className="h-3 w-3" />
-                      Netzwerk: {cryptoDetails.network || "Wählen Sie eine Kryptowährung"}
+                      Netzwerk: {cryptoDetails.network || "Wählen Sie eine Cryptowährung"}
                     </p>
                   </div>
 
@@ -722,7 +753,7 @@ export default function WithdrawPage() {
                   <div className="p-4 bg-[#162040]/50 rounded-lg border border-[#253256] space-y-3">
                     <h4 className="font-semibold text-white flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-[#f9a826]" />
-                      Details der ausgewählten Kryptowährung
+                      Details der ausgewählten Cryptowährung
                     </h4>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
@@ -791,7 +822,7 @@ export default function WithdrawPage() {
                   <>Kein Saldo verfügbar</>
                 ) : (
                   <>
-                    Abhebung anfordern
+                    Request withdrawal
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </>
                 )}
@@ -1161,7 +1192,7 @@ export default function WithdrawPage() {
                                 withdrawalReceipt?.method === "crypto"
                                   ? `
                                 <div class="detail-row">
-                                  <div class="label">Kryptowährung:</div>
+                                  <div class="label">Cryptowährung:</div>
                                   <div class="value">${withdrawalReceipt?.cryptocurrency}</div>
                                 </div>
                                 <div class="detail-row">
