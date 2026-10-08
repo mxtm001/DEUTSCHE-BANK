@@ -3,8 +3,8 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Deutsche Bank",
-  description: "Professional investment platform",
+  title: "MXTM Crypto Platform",
+  description: "A secure crypto investment platform for modern investors",
     generator: 'v0.app'
 }
 
