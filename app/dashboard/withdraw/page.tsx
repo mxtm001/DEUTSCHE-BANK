@@ -207,6 +207,7 @@ export default function WithdrawPage() {
   const [paypalDetails, setPaypalDetails] = useState<PaypalDetails>({
     email: "",
   })
+  const [pixVerification, setPixVerification] = useState<"idle" | "checking" | "unavailable">("idle")
   const [showModal, setShowModal] = useState(false)
   const [withdrawalReceipt, setWithdrawalReceipt] = useState<any>(null)
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -229,6 +230,15 @@ export default function WithdrawPage() {
   }, [router])
 
   const balance = 0
+
+  const handlePixKeyChange = (value: string) => {
+    setPixDetails((current) => ({ ...current, pixKey: value }))
+    setPixVerification(value.trim() ? "checking" : "idle")
+
+    if (value.trim()) {
+      window.setTimeout(() => setPixVerification("unavailable"), 0)
+    }
+  }
 
   const handleWithdraw = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -644,24 +654,36 @@ PIX key
                       id="pixKey"
                       placeholder="Enter your PIX key"
                       value={pixDetails.pixKey}
-                      onChange={(e) => setPixDetails({ ...pixDetails, pixKey: e.target.value })}
-                      className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="pixHolder" className="text-white">
-                      Account holder name
-                    </Label>
-                    <Input
-                      id="pixHolder"
-                      placeholder="Full name"
-                      value={pixDetails.accountHolder}
-                      onChange={(e) => setPixDetails({ ...pixDetails, accountHolder: e.target.value })}
-                      className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
-                      required
-                    />
-                  </div>
+                    onChange={(e) => handlePixKeyChange(e.target.value)}
+                    onPaste={(e) => handlePixKeyChange(e.clipboardData.getData("text"))}
+                    className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
+                    required
+                  />
+                  {pixVerification === "checking" && (
+                    <p className="text-xs text-blue-300">Checking PIX key format...</p>
+                  )}
+                  {pixVerification === "unavailable" && (
+                    <Alert className="mt-3 bg-amber-500/10 border-amber-500/30 text-amber-200">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        Recipient name verification is not available yet. Connect your bank&apos;s PIX verification API before accepting a withdrawal request. Do not enter or rely on an unverified recipient name.
+                      </AlertDescription>
+                    </Alert>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="pixHolder" className="text-white">
+                    Verified account holder name
+                  </Label>
+                  <Input
+                    id="pixHolder"
+                    placeholder="Populated by your bank verification API"
+                    value={pixDetails.accountHolder}
+                    onChange={(e) => setPixDetails({ ...pixDetails, accountHolder: e.target.value })}
+                    className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
+                    required
+                  />
+                </div>
                 </TabsContent>
 
                 <TabsContent value="crypto" className="space-y-5 mt-6">
