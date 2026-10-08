@@ -45,8 +45,7 @@ export default function DashboardPage() {
         return
       }
 
-      // Demo-only preview balance; real account balances remain sourced from the backend.
-      currentUser.balance = 3000000
+      currentUser.balance = 0
       currentUser.totalInvested = 0
       currentUser.totalEarnings = 0
       setUser(currentUser)

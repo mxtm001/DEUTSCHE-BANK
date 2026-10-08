@@ -234,8 +234,7 @@ export default function WithdrawPage() {
     loadUser()
   }, [router])
 
-  // Test-mode balance only: no real funds are moved or paid out.
-  const balance = 3_000_000
+  const balance = user?.balance ?? 0
 
   const handlePixKeyChange = (value: string) => {
     setPixDetails((current) => ({ ...current, pixKey: value }))
@@ -303,7 +302,7 @@ export default function WithdrawPage() {
 
     window.setTimeout(() => {
       setShowProcessing(false)
-      setWithdrawalReceipt({ ...confirmedWithdrawal, status: "Successful (Demo)" })
+      setWithdrawalReceipt({ ...confirmedWithdrawal, status: "Successful" })
       setShowModal(true)
       setPendingWithdrawal(null)
       setAmount("")
@@ -373,7 +372,7 @@ export default function WithdrawPage() {
           <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256]/50 overflow-hidden relative group hover:border-[#f9a826]/50 transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-[#f9a826]/5 to-yellow-400/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Demo balance</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">Available balance</CardTitle>
               <div className="p-2 bg-[#f9a826]/10 rounded-lg">
                 <Wallet className="h-4 w-4 text-[#f9a826]" />
               </div>
