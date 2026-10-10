@@ -616,9 +616,20 @@ export default function WithdrawPage() {
                       Select your {fiatCurrency} bank
                     </Label>
                     <Select
-                      value={bankDetails.bankName}
+                      value={
+                        (currencyBankOptions[fiatCurrency] ?? currencyBankOptions.USD).find(
+                          (bank) => bank.label === bankDetails.bankName,
+                        )?.value ?? ""
+                      }
                       onValueChange={(value) => {
-                        setBankDetails({ ...bankDetails, bankName: value, swiftCode: "" })
+                        const selectedBank = (currencyBankOptions[fiatCurrency] ?? currencyBankOptions.USD).find(
+                          (bank) => bank.value === value,
+                        )
+                        setBankDetails({
+                          ...bankDetails,
+                          bankName: selectedBank?.label ?? value,
+                          swiftCode: "",
+                        })
                       }}
                     >
                       <SelectTrigger
@@ -982,7 +993,7 @@ PayPal email
                       <>
                         <div className="border-t border-slate-600 pt-3 flex justify-between gap-4">
                           <span className="text-gray-400 text-sm">Bank</span>
-                          <span className="text-white text-sm text-right">{pendingWithdrawal.bankName}</span>
+                          <span className="text-white text-sm text-right">{pendingWithdrawal.bankName || "Not provided"}</span>
                         </div>
                         <div className="flex justify-between gap-4">
                           <span className="text-gray-400 text-sm">Account name</span>
