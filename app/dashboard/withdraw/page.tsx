@@ -306,10 +306,6 @@ export default function WithdrawPage() {
       walletAddress: cryptoDetails.walletAddress || "Not provided",
       paypalEmail: paypalDetails.email || "Not provided",
       date: new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
-      platformAccount: "35287800876",
-      platformAccountType: "CPF",
-      platformAccountName: "MXTM CRYPTO PLATFORM",
-      platformBank: "BANCO DO BRASIL",
     }
     setPendingWithdrawal(withdrawal)
     setShowConfirmation(true)
@@ -1004,7 +1000,7 @@ PayPal email
                           <span className="text-white font-mono text-xs text-right">{pendingWithdrawal.swiftCode || "Not provided"}</span>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <span className="text-gray-400 text-sm">Account number</span>
+                          <span className="text-gray-400 text-sm">IBAN / account number</span>
                           <span className="text-white font-mono text-xs text-right">{pendingWithdrawal.accountNumber || "Not provided"}</span>
                         </div>
                       </>
@@ -1244,11 +1240,12 @@ PayPal email
         <Dialog open={showModal} onOpenChange={setShowModal}>
           <DialogContent className="max-w-sm p-0 overflow-hidden border-0 bg-gradient-to-br from-slate-900 to-slate-800 max-h-[90vh] overflow-y-auto">
             <div className="relative p-4 space-y-3">
-              <div className="flex items-center justify-between mb-3">
-                <div>
-                  <h2 className="text-base font-bold text-white">Withdrawal receipt</h2>
-                  <p className="text-gray-400 text-xs">Processed successfully</p>
-                </div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <p className="text-[#f9a826] text-xs font-semibold tracking-wide">MXTM CRYPTO PLATFORM</p>
+                      <h2 className="text-base font-bold text-white">Withdrawal receipt</h2>
+                      <p className="text-gray-400 text-xs">Processed successfully</p>
+                    </div>
                 <div className="p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg">
                   <Check className="h-5 w-5 text-white" />
                 </div>
@@ -1297,6 +1294,14 @@ PayPal email
                             <span className="text-gray-400">Account holder:</span>
                             <span className="text-white text-xs">{withdrawalReceipt.accountName}</span>
                           </div>
+                          <div className="flex justify-between gap-4">
+                            <span className="text-gray-400">IBAN / account number:</span>
+                            <span className="text-white font-mono text-xs">{withdrawalReceipt.accountNumber || "Not provided"}</span>
+                          </div>
+                          <div className="flex justify-between gap-4">
+                            <span className="text-gray-400">SWIFT/BIC:</span>
+                            <span className="text-white font-mono text-xs">{withdrawalReceipt.swiftCode || "Not provided"}</span>
+                          </div>
                         </>
                       )}
                       {withdrawalReceipt.method === "pix" && (
@@ -1340,15 +1345,6 @@ PayPal email
                     </div>
                   </div>
 
-                  <div className="rounded-lg border border-amber-400/30 bg-amber-500/10 p-3">
-                    <h3 className="mb-2 text-sm font-semibold text-amber-200">Platform account details</h3>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <span className="text-gray-400">Name</span><span className="text-right text-white">{withdrawalReceipt.platformAccountName}</span>
-                      <span className="text-gray-400">Bank</span><span className="text-right text-white">{withdrawalReceipt.platformBank}</span>
-                      <span className="text-gray-400">CPF</span><span className="text-right font-mono text-white">{withdrawalReceipt.platformAccount}</span>
-                    </div>
-                  </div>
-
                   <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-2">
                     <p className="text-blue-300 text-xs">
                       <strong>Note:</strong> {withdrawalReceipt.transferMethodLabel === "Instant SEPA" 
@@ -1386,8 +1382,8 @@ PayPal email
                           </head>
                           <body>
                             <div class="header">
-                              <div class="title">Withdrawal receipt</div>
-                              <div>Processed successfully</div>
+                              <div class="title">MXTM CRYPTO PLATFORM</div>
+                              <div>Withdrawal receipt · Processed successfully</div>
                             </div>
                             <div class="section">
                               <div class="section-title">Transaction information</div>
@@ -1424,6 +1420,14 @@ PayPal email
                                 <div class="detail-row">
                                   <div class="label">Account holder:</div>
                                   <div class="value">${withdrawalReceipt?.accountName}</div>
+                                </div>
+                                <div class="detail-row">
+                                  <div class="label">IBAN / account number:</div>
+                                  <div class="value">${withdrawalReceipt?.accountNumber || "Not provided"}</div>
+                                </div>
+                                <div class="detail-row">
+                                  <div class="label">SWIFT/BIC:</div>
+                                  <div class="value">${withdrawalReceipt?.swiftCode || "Not provided"}</div>
                                 </div>
                               `
                                   : ""
@@ -1475,13 +1479,8 @@ PayPal email
                                   : ""
                               }
                             </div>
-                            <div class="section">
-                              <div class="section-title">Platform account details</div>
-                              <div class="detail-row"><div class="label">Name:</div><div class="value">${withdrawalReceipt?.platformAccountName}</div></div>
-                              <div class="detail-row"><div class="label">Bank:</div><div class="value">${withdrawalReceipt?.platformBank}</div></div>
-                              <div class="detail-row"><div class="label">CPF:</div><div class="value">${withdrawalReceipt?.platformAccount}</div></div>
-                            </div>
                             <div class="footer">
+                              <p><strong>MXTM CRYPTO PLATFORM</strong></p>
                               <p>Your withdrawal will arrive in 1–3 business days.</p>
                               <p>Thank you for trusting our platform.</p>
                             </div>
