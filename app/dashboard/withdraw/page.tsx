@@ -161,25 +161,28 @@ const brazilianBanks = [
   { value: "999", label: "Outro Banco" },
 ]
 
-const internationalBanks = [
-  { value: "chase", label: "Chase Bank" },
-  { value: "bank-of-america", label: "Bank of America" },
-  { value: "wells-fargo", label: "Wells Fargo" },
-  { value: "citibank", label: "Citibank" },
-  { value: "capital-one", label: "Capital One" },
-  { value: "hsbc", label: "HSBC" },
-  { value: "barclays", label: "Barclays" },
-  { value: "lloyds", label: "Lloyds Bank" },
-  { value: "santander", label: "Santander Bank" },
-  { value: "credit-suisse", label: "Credit Suisse" },
-  { value: "ubs", label: "UBS" },
-  { value: "jp-morgan", label: "JPMorgan Chase Bank" },
-  { value: "goldman-sachs", label: "Goldman Sachs Bank" },
-  { value: "revolut", label: "Revolut Bank" },
-  { value: "wise", label: "Wise" },
-  { value: "n26", label: "N26" },
-  { value: "other", label: "Other Bank" },
+const bankNames = [
+  "Chase Bank", "Bank of America", "Wells Fargo", "Citibank", "Capital One",
+  "U.S. Bank", "PNC Bank", "Truist", "TD Bank", "Fifth Third Bank",
+  "HSBC", "Barclays", "Lloyds Bank", "NatWest", "Royal Bank of Canada",
+  "Scotiabank", "Bank of Montreal", "Commonwealth Bank", "Westpac", "ANZ Bank",
+  "Banco do Brasil", "Itaú Unibanco", "Bradesco", "Caixa Econômica Federal", "Santander Brasil",
+  "Nubank", "Banco Inter", "BTG Pactual", "Banco Safra", "Sicoob",
+  "JPMorgan Chase", "Goldman Sachs", "Morgan Stanley", "BNP Paribas", "Société Générale",
+  "Deutsche Bank", "Commerzbank", "ING Bank", "Rabobank", "UniCredit",
+  "Credit Suisse", "UBS", "Mizuho Bank", "MUFG Bank", "DBS Bank",
+  "Standard Chartered", "China Construction Bank", "Bank of China", "ICBC", "Revolut",
 ]
+
+const currencyBankOptions = Object.fromEntries(
+  fiatCurrencies.map((currency) => [
+    currency.value,
+    bankNames.map((label, index) => ({
+      value: `${currency.value.toLowerCase()}-bank-${index + 1}`,
+      label,
+    })),
+  ]),
+) as Record<string, { value: string; label: string }[]>
 
 export default function WithdrawPage() {
   const router = useRouter()
@@ -587,12 +590,11 @@ export default function WithdrawPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="bank" className="text-white">
-                      Select your bank
+                      Select your {fiatCurrency} bank
                     </Label>
                     <Select
                       value={bankDetails.bankName}
                       onValueChange={(value) => {
-                        const bank = internationalBanks.find((b) => b.value === value)
                         setBankDetails({ ...bankDetails, bankName: value, swiftCode: "" })
                       }}
                     >
@@ -603,7 +605,7 @@ export default function WithdrawPage() {
                         <SelectValue placeholder="Select your bank" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white max-h-96">
-                        {internationalBanks.map((bank) => (
+                        {(currencyBankOptions[fiatCurrency] ?? currencyBankOptions.USD).map((bank) => (
                           <SelectItem
                             key={bank.value}
                             value={bank.value}
