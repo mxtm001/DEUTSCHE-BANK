@@ -184,6 +184,21 @@ const currencyBankOptions = Object.fromEntries(
   ]),
 ) as Record<string, { value: string; label: string }[]>
 
+const euroBanks = [
+  "Deutsche Bank", "Commerzbank", "DZ Bank", "KfW Bankengruppe", "ING Germany",
+  "N26", "Sparkasse", "Volksbank", "Landesbank Baden-Württemberg", "Bayerische Landesbank",
+  "BNP Paribas", "Crédit Agricole", "Société Générale", "Groupe BPCE", "La Banque Postale",
+  "ABN AMRO", "Rabobank", "ING Netherlands", "Bunq", "Triodos Bank",
+  "Banco Santander", "BBVA", "CaixaBank", "Banco Sabadell", "Bankinter",
+  "UniCredit", "Intesa Sanpaolo", "Banco BPM", "BPER Banca", "Mediobanca",
+  "Erste Group", "Raiffeisen Bank International", "BAWAG", "Bank Austria", "Oberbank",
+  "UBS Europe", "Credit Suisse Europe", "Nordea", "SEB", "Swedbank",
+  "Danske Bank", "DNB Bank", "Handelsbanken", "Länsförsäkringar Bank", "Jyske Bank",
+  "KBC Bank", "Belfius", "Bank of Ireland", "Allied Irish Banks", "Luminor Bank",
+].map((label, index) => ({ value: `eur-bank-${index + 1}`, label }))
+
+currencyBankOptions.EUR = euroBanks
+
 export default function WithdrawPage() {
   const router = useRouter()
   const [user, setUser] = useState<any>(null)
@@ -514,7 +529,13 @@ export default function WithdrawPage() {
                     <Label htmlFor="fiatCurrency" className="text-white">
                       Fiat currency
                     </Label>
-                    <Select value={fiatCurrency} onValueChange={setFiatCurrency}>
+                    <Select
+                          value={fiatCurrency}
+                          onValueChange={(value) => {
+                            setFiatCurrency(value)
+                            setBankDetails((current) => ({ ...current, bankName: "", swiftCode: "" }))
+                          }}
+                        >
                       <SelectTrigger
                         id="fiatCurrency"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
