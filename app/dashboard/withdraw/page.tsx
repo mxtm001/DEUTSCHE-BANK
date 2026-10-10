@@ -172,6 +172,7 @@ const bankNames = [
   "Deutsche Bank", "Commerzbank", "ING Bank", "Rabobank", "UniCredit",
   "Credit Suisse", "UBS", "Mizuho Bank", "MUFG Bank", "DBS Bank",
   "Standard Chartered", "China Construction Bank", "Bank of China", "ICBC", "Revolut",
+  "SumUp",
 ]
 
 const currencyBankOptions = Object.fromEntries(
@@ -195,6 +196,7 @@ const euroBanks = [
   "UBS Europe", "Credit Suisse Europe", "Nordea", "SEB", "Swedbank",
   "Danske Bank", "DNB Bank", "Handelsbanken", "Länsförsäkringar Bank", "Jyske Bank",
   "KBC Bank", "Belfius", "Bank of Ireland", "Allied Irish Banks", "Luminor Bank",
+  "SumUp",
 ].map((label, index) => ({ value: `eur-bank-${index + 1}`, label }))
 
 currencyBankOptions.EUR = euroBanks
