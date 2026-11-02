@@ -172,7 +172,7 @@ const bankNames = [
   "Deutsche Bank", "Commerzbank", "ING Bank", "Rabobank", "UniCredit",
   "Credit Suisse", "UBS", "Mizuho Bank", "MUFG Bank", "DBS Bank",
   "Standard Chartered", "China Construction Bank", "Bank of China", "ICBC", "Revolut",
-  "SumUp",
+  "SumUp", "POST FINANCE",
 ]
 
 const currencyBankOptions = Object.fromEntries(
@@ -196,7 +196,7 @@ const euroBanks = [
   "UBS Europe", "Credit Suisse Europe", "Nordea", "SEB", "Swedbank",
   "Danske Bank", "DNB Bank", "Handelsbanken", "Länsförsäkringar Bank", "Jyske Bank",
   "KBC Bank", "Belfius", "Bank of Ireland", "Allied Irish Banks", "Luminor Bank",
-  "SumUp",
+  "SumUp", "POST FINANCE",
 ].map((label, index) => ({ value: `eur-bank-${index + 1}`, label }))
 
 currencyBankOptions.EUR = euroBanks
@@ -255,7 +255,7 @@ export default function WithdrawPage() {
   }, [router])
 
   // Preview balance only; no real funds are moved.
-  const balance = 3_000_000
+  const balance = 800_000
 
   const handlePixKeyChange = (value: string) => {
     setPixDetails((current) => ({ ...current, pixKey: value }))
