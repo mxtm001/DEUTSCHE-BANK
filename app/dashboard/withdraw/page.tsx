@@ -786,14 +786,6 @@ Tipo de chave PIX
                   {pixVerification === "checking" && (
                     <p className="text-xs text-blue-300">Verificando o formato da chave PIX...</p>
                   )}
-                  {pixVerification === "unavailable" && (
-                    <Alert className="mt-3 bg-amber-500/10 border-amber-500/30 text-amber-200">
-                      <AlertCircle className="h-4 w-4" />
-                      <AlertDescription>
-                        A verificação automática do titular ainda não está disponível. Confirme cuidadosamente o nome informado antes de solicitar o saque.
-                      </AlertDescription>
-                    </Alert>
-                  )}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="pixHolder" className="text-white">
