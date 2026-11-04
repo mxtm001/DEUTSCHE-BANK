@@ -966,7 +966,7 @@ Solicitar saque
               </div>
 
               <DialogHeader className="text-center space-y-2">
-                <DialogTitle className="text-lg font-bold text-white">Confirm withdrawal</DialogTitle>
+                <DialogTitle className="text-lg font-bold text-white">Confirmar saque</DialogTitle>
                 <DialogDescription className="sr-only">Please confirm your withdrawal</DialogDescription>
               </DialogHeader>
 
@@ -1057,21 +1057,21 @@ Solicitar saque
 
                   <div className="space-y-2">
                     <Label htmlFor="withdrawal-confirmation-code" className="text-white">
-                      Six-digit confirmation code
+                      Código de confirmação de seis dígitos
                     </Label>
                     <Input
                       id="withdrawal-confirmation-code"
                       inputMode="numeric"
                       autoComplete="one-time-code"
                       maxLength={6}
-                      placeholder="Enter your 6-digit code"
+                      placeholder="Digite seu código de 6 dígitos"
                       value={confirmationCode}
                       onChange={(event) => setConfirmationCode(event.target.value.replace(/\\D/g, "").slice(0, 6))}
                       className="h-12 bg-slate-700/50 border-slate-600 text-white text-center text-lg tracking-[0.45em] focus:border-green-400"
                       aria-describedby="withdrawal-code-help"
                     />
                     <p id="withdrawal-code-help" className="text-xs text-gray-400">
-                      Enter the one-time code sent to your verified contact before confirming this withdrawal.
+                      Digite o código de uso único enviado ao seu contato verificado antes de confirmar este saque.
                     </p>
                   </div>
                 </div>
@@ -1088,8 +1088,8 @@ Solicitar saque
                   onClick={handleConfirmWithdrawal}
                   disabled={!/^\d{6}$/.test(confirmationCode)}
                   className="flex-1 h-10 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  Confirm withdrawal
+> Confirmar saque
+
                 </Button>
               </div>
             </div>
