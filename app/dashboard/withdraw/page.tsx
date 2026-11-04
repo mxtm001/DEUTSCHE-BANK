@@ -719,8 +719,11 @@ export default function WithdrawPage() {
                       Selecione seu banco
                     </Label>
                     <Select
-                      value={pixDetails.bank}
-                      onValueChange={(value) => setPixDetails({ ...pixDetails, bank: value })}
+                      value={brazilianBanks.find((bank) => bank.label === pixDetails.bank)?.value ?? ""}
+                      onValueChange={(value) => {
+                        const selectedBank = brazilianBanks.find((bank) => bank.value === value)
+                        setPixDetails({ ...pixDetails, bank: selectedBank?.label ?? value })
+                      }}
                     >
                       <SelectTrigger
                         id="pixBank"
@@ -773,7 +776,7 @@ Tipo de chave PIX
                     </Label>
                     <Input
                       id="pixKey"
-                      placeholder="Enter your Chave PIX"
+                      placeholder="Digite sua chave PIX"
                       value={pixDetails.pixKey}
                     onChange={(e) => handlePixKeyChange(e.target.value)}
                     onPaste={(e) => handlePixKeyChange(e.clipboardData.getData("text"))}
