@@ -367,10 +367,10 @@ export default function WithdrawPage() {
               <Wallet className="h-6 w-6 text-black" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Withdraw funds
+              Sacar fundos
             </h1>
           </div>
-          <p className="text-muted-foreground text-lg">Withdraw your funds securely to your preferred account</p>
+          <p className="text-muted-foreground text-lg">Saque seus fundos com segurança para a conta de sua preferência</p>
         </div>
 
         {showProcessing && (
@@ -381,8 +381,8 @@ export default function WithdrawPage() {
           >
             <div className="h-8 w-8 shrink-0 animate-spin rounded-full border-4 border-blue-300/25 border-t-blue-300" />
             <div>
-              <p className="font-semibold">Processing withdrawal</p>
-              <p className="text-sm text-blue-200/80">Verifying destination and preparing your receipt. Please wait...</p>
+              <p className="font-semibold">Processando saque</p>
+              <p className="text-sm text-blue-200/80">Verificando o destino e preparando seu comprovante. Aguarde...</p>
             </div>
           </div>
         )}
@@ -391,7 +391,7 @@ export default function WithdrawPage() {
           <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256]/50 overflow-hidden relative group hover:border-[#f9a826]/50 transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-[#f9a826]/5 to-yellow-400/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Available balance</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">Saldo disponível</CardTitle>
               <div className="p-2 bg-[#f9a826]/10 rounded-lg">
                 <Wallet className="h-4 w-4 text-[#f9a826]" />
               </div>
@@ -402,7 +402,7 @@ export default function WithdrawPage() {
               </div>
               <p className="text-xs text-gray-400 mt-2 flex items-center">
                 <AlertCircle className="h-3 w-3 mr-1 text-green-400" />
-                Ready to withdraw
+                Pronto para sacar
               </p>
             </CardContent>
           </Card>
@@ -410,7 +410,7 @@ export default function WithdrawPage() {
           <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256]/50 overflow-hidden relative group hover:border-blue-400/50 transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Processing time</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">Tempo de processamento</CardTitle>
               <div className="p-2 bg-blue-500/10 rounded-lg">
                 <Clock className="h-4 w-4 text-blue-400" />
               </div>
@@ -419,7 +419,7 @@ export default function WithdrawPage() {
               <div className="text-xl font-bold text-white">1–3 business days</div>
               <p className="text-xs text-gray-400 mt-2 flex items-center">
                 <Zap className="h-3 w-3 mr-1 text-blue-400" />
-                Fast processing
+                Processamento rápido
               </p>
             </CardContent>
           </Card>
@@ -427,16 +427,16 @@ export default function WithdrawPage() {
           <Card className="bg-gradient-to-br from-[#0a1735] to-[#162040] border-[#253256]/50 overflow-hidden relative group hover:border-green-400/50 transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Withdrawal limit</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">Limite de saque</CardTitle>
               <div className="p-2 bg-green-500/10 rounded-lg">
                 <TrendingUp className="h-4 w-4 text-green-400" />
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-xl font-bold text-white">Unlimited</div>
+              <div className="text-xl font-bold text-white">Ilimitado</div>
               <p className="text-xs text-gray-400 mt-2 flex items-center">
                 <Globe className="h-3 w-3 mr-1 text-green-400" />
-                No restrictions
+                Sem restrições
               </p>
             </CardContent>
           </Card>
@@ -448,7 +448,7 @@ export default function WithdrawPage() {
               <div>
                 <CardTitle className="text-2xl font-bold text-white">Request withdrawal</CardTitle>
                 <CardDescription className="text-gray-400 mt-2">
-                  Choose your preferred withdrawal method and enter your details
+                  Escolha o método de saque e informe seus dados
                 </CardDescription>
               </div>
               <div className="p-3 bg-gradient-to-r from-[#f9a826]/10 to-yellow-400/10 rounded-lg">
@@ -461,14 +461,14 @@ export default function WithdrawPage() {
               <div className="space-y-3">
                 <Label htmlFor="amount" className="text-white text-base font-semibold flex items-center">
                   <DollarSign className="h-4 w-4 mr-2 text-[#f9a826]" />
-                  Withdrawal amount (USD)
+                  Valor do saque (USD)
                 </Label>
                 <div className="relative">
                   <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">$</div>
                   <Input
                     id="amount"
                     type="number"
-                    placeholder="Enter amount"
+                    placeholder="Digite o valor"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     className="pl-8 h-14 bg-[#162040]/50 border-[#253256] text-white text-lg focus:border-[#f9a826] transition-colors"
@@ -478,7 +478,7 @@ export default function WithdrawPage() {
                   />
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <p className="text-gray-400">Available balance:</p>
+                  <p className="text-gray-400">Saldo disponível:</p>
                   <p className="text-[#f9a826] font-semibold">{formatCurrency(balance)}</p>
                 </div>
               </div>
@@ -497,7 +497,7 @@ export default function WithdrawPage() {
                     className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#f9a826] data-[state=active]:to-yellow-400 data-[state=active]:text-black flex items-center gap-2 py-3"
                   >
                     <Building2 className="h-4 w-4" />
-                    <span className="hidden sm:inline">Bank</span>
+                    <span className="hidden sm:inline">Banco</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="pix"
@@ -511,7 +511,7 @@ export default function WithdrawPage() {
                     className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#f9a826] data-[state=active]:to-yellow-400 data-[state=active]:text-black flex items-center gap-2 py-3"
                   >
                     <Wallet className="h-4 w-4" />
-                    <span className="hidden sm:inline">Crypto</span>
+                    <span className="hidden sm:inline">Cripto</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="paypal"
@@ -632,7 +632,7 @@ export default function WithdrawPage() {
                         id="bank"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Select your bank" />
+                        <SelectValue placeholder="Selecione seu banco" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white max-h-96">
                         {(currencyBankOptions[fiatCurrency] ?? currencyBankOptions.USD).map((bank) => (
@@ -651,11 +651,11 @@ export default function WithdrawPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <Label htmlFor="accountName" className="text-white">
-                        Account holder name
+                        Nome do titular da conta
                       </Label>
                       <Input
                         id="accountName"
-                        placeholder="Full name as shown on your bank account"
+                        placeholder="Nome completo as shown on your bank account"
                         value={bankDetails.accountName}
                         onChange={(e) => setBankDetails({ ...bankDetails, accountName: e.target.value })}
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
@@ -694,12 +694,12 @@ export default function WithdrawPage() {
                 <TabsContent value="pix" className="space-y-5 mt-6">
                   <Alert className="bg-blue-500/10 border-blue-500/30 text-blue-300">
                     <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>PIX withdrawals are processed instantly to your account</AlertDescription>
+                    <AlertDescription>Os saques via PIX são processados instantaneamente em sua conta</AlertDescription>
                   </Alert>
 
                   <div className="space-y-2">
                     <Label htmlFor="pixCurrency" className="text-white">
-                      Withdrawal currency
+                      Moeda do saque
                     </Label>
                     <Select value="BRL" onValueChange={() => setFiatCurrency("BRL")}>
                       <SelectTrigger
@@ -716,7 +716,7 @@ export default function WithdrawPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="pixBank" className="text-white">
-                      Select your bank
+                      Selecione seu banco
                     </Label>
                     <Select
                       value={pixDetails.bank}
@@ -726,7 +726,7 @@ export default function WithdrawPage() {
                         id="pixBank"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Select your bank" />
+                        <SelectValue placeholder="Selecione seu banco" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white">
                         {brazilianBanks.map((bank) => (
@@ -744,7 +744,7 @@ export default function WithdrawPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="pixKeyType" className="text-white">
-                      PIX key type
+Tipo de chave PIX
                     </Label>
                     <Select
                       value={pixDetails.keyType}
@@ -756,24 +756,24 @@ export default function WithdrawPage() {
                         id="pixKeyType"
                         className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
                       >
-                        <SelectValue placeholder="Select key type" />
+                        <SelectValue placeholder="Selecione o tipo de chave" />
                       </SelectTrigger>
                       <SelectContent className="bg-[#162040] border-[#253256] text-white">
                         <SelectItem value="cpf">CPF</SelectItem>
-                        <SelectItem value="digital">Digital Key</SelectItem>
+                        <SelectItem value="digital">Chave aleatória</SelectItem>
                         <SelectItem value="email">Email</SelectItem>
-                        <SelectItem value="cellular">Cellular Key</SelectItem>
+                        <SelectItem value="cellular">Celular</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="pixKey" className="text-white">
-                      PIX key
+                      Chave PIX
                     </Label>
                     <Input
                       id="pixKey"
-                      placeholder="Enter your PIX key"
+                      placeholder="Enter your Chave PIX"
                       value={pixDetails.pixKey}
                     onChange={(e) => handlePixKeyChange(e.target.value)}
                     onPaste={(e) => handlePixKeyChange(e.clipboardData.getData("text"))}
@@ -781,7 +781,7 @@ export default function WithdrawPage() {
                     required
                   />
                   {pixVerification === "checking" && (
-                    <p className="text-xs text-blue-300">Checking PIX key format...</p>
+                    <p className="text-xs text-blue-300">Checking Chave PIX format...</p>
                   )}
                   {pixVerification === "unavailable" && (
                     <Alert className="mt-3 bg-amber-500/10 border-amber-500/30 text-amber-200">
@@ -794,7 +794,7 @@ export default function WithdrawPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="pixHolder" className="text-white">
-                    Account name
+                    Nome da conta
                   </Label>
                   <Input
                     id="pixHolder"
@@ -947,7 +947,7 @@ PayPal email
                   <>No balance available</>
                 ) : (
                   <>
-                    Request withdrawal
+Solicitar saque
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </>
                 )}
@@ -992,7 +992,7 @@ PayPal email
                           <span className="text-white text-sm text-right">{pendingWithdrawal.bankName || "Not provided"}</span>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <span className="text-gray-400 text-sm">Account name</span>
+                          <span className="text-gray-400 text-sm">Nome da conta</span>
                           <span className="text-white text-sm text-right">{pendingWithdrawal.accountName}</span>
                         </div>
                         <div className="flex justify-between gap-4">
@@ -1012,15 +1012,15 @@ PayPal email
                           <span className="text-white text-sm">BRL (R$)</span>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <span className="text-gray-400 text-sm">PIX key type</span>
+                          <span className="text-gray-400 text-sm">Chave PIX type</span>
                           <span className="text-white text-sm">{pendingWithdrawal.keyType}</span>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <span className="text-gray-400 text-sm">PIX key</span>
+                          <span className="text-gray-400 text-sm">Chave PIX</span>
                           <span className="text-white font-mono text-xs break-all text-right">{pendingWithdrawal.pixKey}</span>
                         </div>
                         <div className="flex justify-between gap-4">
-                          <span className="text-gray-400 text-sm">Account name</span>
+                          <span className="text-gray-400 text-sm">Nome da conta</span>
                           <span className="text-white text-sm text-right">{pendingWithdrawal.accountHolder}</span>
                         </div>
                         <div className="flex justify-between gap-4">
@@ -1307,15 +1307,15 @@ PayPal email
                       {withdrawalReceipt.method === "pix" && (
                         <>
                           <div className="flex justify-between gap-4">
-                            <span className="text-gray-400">PIX key type:</span>
+                            <span className="text-gray-400">Chave PIX type:</span>
                             <span className="text-white text-xs">{withdrawalReceipt.keyType || "Not provided"}</span>
                           </div>
                           <div className="flex justify-between gap-4">
-                            <span className="text-gray-400">PIX key:</span>
+                            <span className="text-gray-400">Chave PIX:</span>
                             <span className="text-white font-mono text-xs break-all">{withdrawalReceipt.pixKey}</span>
                           </div>
                           <div className="flex justify-between gap-4">
-                            <span className="text-gray-400">Account name:</span>
+                            <span className="text-gray-400">Nome da conta:</span>
                             <span className="text-white text-xs">{withdrawalReceipt.accountHolder || "Not provided"}</span>
                           </div>
                           <div className="flex justify-between gap-4">
@@ -1436,15 +1436,15 @@ PayPal email
                                 withdrawalReceipt?.method === "pix"
                                   ? `
                                 <div class="detail-row">
-                                  <div class="label">PIX key type:</div>
+                                  <div class="label">Chave PIX type:</div>
                                   <div class="value">${withdrawalReceipt?.keyType || "Not provided"}</div>
                                 </div>
                                 <div class="detail-row">
-                                  <div class="label">PIX key:</div>
+                                  <div class="label">Chave PIX:</div>
                                   <div class="value">${withdrawalReceipt?.pixKey}</div>
                                 </div>
                                 <div class="detail-row">
-                                  <div class="label">Account name:</div>
+                                  <div class="label">Nome da conta:</div>
                                   <div class="value">${withdrawalReceipt?.accountHolder || "Not provided"}</div>
                                 </div>
                                 <div class="detail-row">
