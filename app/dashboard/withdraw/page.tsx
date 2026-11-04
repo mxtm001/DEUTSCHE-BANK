@@ -1051,7 +1051,7 @@ Solicitar saque
 
                   <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-3">
                     <p className="text-yellow-300 text-sm">
-                      <strong>Important:</strong> Please review all details carefully before continuing. This action cannot be undone.
+                      <strong>Importante:</strong> Revise todos os dados com atenção antes de continuar. Esta ação não pode ser desfeita.
                     </p>
                   </div>
 
@@ -1081,15 +1081,15 @@ Solicitar saque
                 <Button
                   onClick={() => setShowConfirmation(false)}
                   className="flex-1 h-10 bg-slate-700 hover:bg-slate-600 text-white font-semibold"
-                >
-                  Cancel
+> Cancelar
+
                 </Button>
                 <Button
                   onClick={handleConfirmWithdrawal}
                   disabled={!/^\d{6}$/.test(confirmationCode)}
                   className="flex-1 h-10 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold disabled:cursor-not-allowed disabled:opacity-50"
-> Confirmar saque
-
+                >
+                  Confirmar saque
                 </Button>
               </div>
             </div>
