@@ -784,13 +784,13 @@ Tipo de chave PIX
                     required
                   />
                   {pixVerification === "checking" && (
-                    <p className="text-xs text-blue-300">Checking Chave PIX format...</p>
+                    <p className="text-xs text-blue-300">Verificando o formato da chave PIX...</p>
                   )}
                   {pixVerification === "unavailable" && (
                     <Alert className="mt-3 bg-amber-500/10 border-amber-500/30 text-amber-200">
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription>
-                        Recipient name verification is not available yet. Connect your bank&apos;s PIX verification API before accepting a withdrawal request. Do not enter or rely on an unverified recipient name.
+                        A verificação automática do titular ainda não está disponível. Confirme cuidadosamente o nome informado antes de solicitar o saque.
                       </AlertDescription>
                     </Alert>
                   )}
@@ -801,7 +801,7 @@ Tipo de chave PIX
                   </Label>
                   <Input
                     id="pixHolder"
-                    placeholder="Populated by your bank verification API"
+                    placeholder="Digite o nome do titular da conta"
                     value={pixDetails.accountHolder}
                     onChange={(e) => setPixDetails({ ...pixDetails, accountHolder: e.target.value })}
                     className="bg-[#162040]/50 border-[#253256] text-white h-12 focus:border-[#f9a826]"
